@@ -25,10 +25,29 @@ public class ProyectoBO {
 			dao.deleteProyectoById(p);	
 	}
 	
-	public void modificarProyecto(Proyecto p)throws MyDAOExcepcion{
-		dao.updateProyecto(p);
+	public void modificarProyecto(Proyecto proyectoToModify)throws MyDAOExcepcion{
+		
+		boolean checkpoint = true;
+		
+		try {
+		
+			dao.getProyectoById(proyectoToModify);
+		}
+		
+		catch (MyDAOExcepcion e)  {
+			
+			checkpoint = false;
+			
+		}
+
+		if (checkpoint ==true) { 
+		
+		dao.updateProyecto(proyectoToModify);
+		}
 	}
 
+	
+	
 	public List<Proyecto> getProyectos() throws MyDAOExcepcion{
 		return dao.getAllProyectos();
 	}
