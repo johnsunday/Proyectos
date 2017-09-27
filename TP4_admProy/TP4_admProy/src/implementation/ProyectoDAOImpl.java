@@ -32,18 +32,18 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 			}
 
 			c.commit();
-		} catch (Exception e) {
+		} catch (SQLException e) {
 			try {
 				c.rollback();
 				e.printStackTrace();
-			} catch (Exception e1) 
+			} catch (SQLException e1) 
 			{
 				throw new MyDAOExcepcion("El proyecto que desea borrar no existe");
 			}
 		} finally {
 			try {
 				c.close();
-			} catch (Exception e1) 
+			} catch (SQLException e1) 
 			{
 				e1.printStackTrace();
 			}
@@ -92,12 +92,14 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 	}
 
 	public Proyecto getProyectoById(Proyecto p) throws MyDAOExcepcion {
-		String sql = "SELECT * FROM proyecto WHERE id= " + p.getId();
+		String sql = "SELECT * FROM proyecto WHERE id= ? "; //+ p.getId();
 		Connection c = DBManager.getInstance().connect();
 
 		try {
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
+			
+			
 			p.setId(rs.getInt("id"));
 			p.setTema(rs.getString("Tema"));
 			p.setPresupuesto(rs.getInt("Presupuesto"));
@@ -158,12 +160,18 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 
 	@Override
 	public void updateProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "UPDATE proyecto SET tema= '"+ p.getTema() +"'"+", "+ "presupuesto=" + p.getPresupuesto() + " WHERE id ="+ p.getId();	
+		String sql = "UPDATE proyecto SET tema=  ? , presupuesto = ? where id= ? ";//+ p.getTema() +"'"+", "+ "presupuesto=" + p.getPresupuesto() + " WHERE id ="+ p.getId();	
 		Connection c = DBManager.getInstance().connect();
 		
 		try {
-			Statement s = c.createStatement();
-			s.executeQuery(sql);
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setString(1,p.getTema());
+			ps.setInt(2,p.getPresupuesto());
+			ps.setInt(3,p.getId());
+			
+			ps.executeUpdate();
+			
 			c.commit();
 
 		} catch (SQLException e) {
