@@ -31,16 +31,20 @@ public class ProyectoBO {
 		
 		try {
 		
-			dao.getProyectoById(proyectoToModify);
+			if (dao.getProyectoById(proyectoToModify))
+			
+			System.out.println("Hola");
 		}
 		
 		catch (MyDAOExcepcion e)  {
 			
 			checkpoint = false;
+			System.out.println("Hola2");
 			
 		}
 
 		if (checkpoint ==true) { 
+			System.out.println("Hola3");
 		
 		dao.updateProyecto(proyectoToModify);
 		}
