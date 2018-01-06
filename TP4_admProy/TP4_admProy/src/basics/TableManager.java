@@ -9,7 +9,7 @@ public class TableManager {
 
 		Connection c = DBManager.getInstance().connect();
 		
-		String sql = "CREATE TABLE proyecto ( id INTEGER IDENTITY, tema VARCHAR(100), presupuesto INT)";
+		String sql = "CREATE TABLE proyecto ( id INTEGER IDENTITY, tema VARCHAR(100), presupuesto INT, estado VARCHAR(20))";
 		
 		try {
 			Statement s = c.createStatement();
@@ -181,7 +181,7 @@ public class TableManager {
 
 		Connection c = DBManager.getInstance().connect();
 			
-		String sql = "CREATE TABLE tarea (id INTEGER IDENTITY, descripcion VARCHAR(255), proyecto INT, estado VARCHAR(20))";
+		String sql = "CREATE TABLE tarea (id INTEGER IDENTITY, descripcion VARCHAR(255), proyecto INT, horas INT, estado VARCHAR(20))";
 		
 		try {
 			Statement s = c.createStatement();
@@ -205,7 +205,7 @@ public class TableManager {
 	}
 	
 
-	public void dropEmpleadoTable() {
+	public void dropTareaTable() {
 
 		Connection c = DBManager.getInstance().connect();
 		
