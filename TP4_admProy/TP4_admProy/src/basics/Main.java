@@ -15,9 +15,16 @@ public class Main {
 		 * Creamos el handler y ejecutamos el init. 
 		 * 
 		 */
+			
+		TableManager tmproyecto = new TableManager();
+		tmproyecto.createProyectoTable();
 		
-		TableManager tm = new TableManager();
-		tm.createProyectoTable();
+		TableManager tmtarea = new TableManager();
+		tmtarea.createTareaTable();
+		
+		TableManager tmempleado= new TableManager();
+		tmempleado.createEmpleadoTable();
+		
 
 		HandlerProyecto handler = new HandlerProyecto();
 		handler.init();
