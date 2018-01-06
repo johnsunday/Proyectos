@@ -56,7 +56,7 @@ public class ProyectoBO {
 		return dao.getAllProyectos();
 	}
 
-	public Proyecto getProyectoPorId(Proyecto p) throws MyDAOExcepcion{
+	public boolean getProyectoPorId(Proyecto p) throws MyDAOExcepcion{
 		return dao.getProyectoById(p);
 	}
 	
