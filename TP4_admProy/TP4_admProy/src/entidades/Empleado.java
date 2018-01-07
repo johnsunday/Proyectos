@@ -35,6 +35,8 @@ public class Empleado {
 		this.sueldoHora = sueldoHora;
 		this.nombreCompleto = nombreCompleto;
 	}
-	
+	public Empleado() {
+		// TODO Auto-generated constructor stub
+	}
 	}
 
