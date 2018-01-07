@@ -181,7 +181,7 @@ public class TableManager {
 
 		Connection c = DBManager.getInstance().connect();
 			
-		String sql = "CREATE TABLE tarea (id INTEGER IDENTITY, descripcion VARCHAR(255), proyecto INT, horas INT, estado VARCHAR(20))";
+		String sql = "CREATE TABLE tarea (id INTEGER IDENTITY, descripcion VARCHAR(255), proyecto INT, horas INT, empleado INT, estado VARCHAR(20))";
 		
 		try {
 			Statement s = c.createStatement();

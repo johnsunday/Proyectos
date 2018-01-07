@@ -2,11 +2,37 @@ package entidades;
 
 public class Tarea {
 	
-	
 	private int id;
 	private String descripcion;
 	private int horas;
+	private String estado;
+	
+	public String getEstado() {
+		return estado;
+	}
 
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+	public int getProyectoid() {
+		return proyectoid;
+	}
+
+	public void setProyectoid(int proyectoid) {
+		this.proyectoid = proyectoid;
+	}
+
+	public int getEmpleadoid() {
+		return empleadoid;
+	}
+
+	public void setEmpleadoid(int empleadoid) {
+		this.empleadoid = empleadoid;
+	}
+	private int proyectoid;
+	private int empleadoid;
+	
 	
 
 	@Override
@@ -20,8 +46,11 @@ public class Tarea {
 		this.horas = horas;
 	}
 
-	
-	
+
+	public Tarea() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
