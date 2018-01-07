@@ -15,8 +15,8 @@ public interface EmpleadoDAO {
 	public void insertEmpleado(Empleado e) throws MyDAOExcepcion;
 	public void deleteEmpleadoById(Empleado e) throws MyDAOExcepcion;
 	public void updateEmpleado(Empleado e) throws MyDAOExcepcion;
-	public boolean getEmpleadoById(Empleado e) throws MyDAOExcepcion;
+	public boolean validateEmpleado(Empleado e) throws MyDAOExcepcion;
 	public List<Empleado>  getAllEmpleados() throws MyDAOExcepcion;	
-
+	public Empleado getEmpleadoById(Empleado e) throws MyDAOExcepcion;	
 }
 

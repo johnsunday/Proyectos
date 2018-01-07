@@ -48,6 +48,7 @@ public class HandlerProyecto {
 	}
 
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
+		
 		try {
 		proyectoBO.bajaProyecto(p);
 		} catch (MyDAOExcepcion e){
@@ -91,31 +92,6 @@ public class HandlerProyecto {
 		frame.cerrarPanel();
 	}
 
-	public Proyecto validarProyecto(String id, String tema, String presupuesto) throws MyFormatExcepcion {
 
-		if (id == null) {
-
-			try {
-				Proyecto p = new Proyecto(tema, Integer.parseInt(presupuesto));
-				return p;
-			}
-
-			catch (Exception f) {
-
-				throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto. ");
-			}
-		} else if (id != null){
-			try {
-				Proyecto p = new Proyecto(Integer.parseInt(id));
-				return p;
-			}
-
-			catch (Exception f1) {
-
-				throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto.");
-			}
-		}
-		return null;
-	}
 
 }

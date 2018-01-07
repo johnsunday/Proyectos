@@ -119,7 +119,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 	}
 
 	@Override
-	public boolean getEmpleadoById(Empleado e) throws MyDAOExcepcion {
+	public boolean validateEmpleado(Empleado e) throws MyDAOExcepcion {
 	
 
 		String sql = "SELECT 1 FROM Empleado WHERE id= ?";// + p.getId();
@@ -193,6 +193,12 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 		}
 		return resultado;
 
+	}
+
+	@Override
+	public Empleado getEmpleadoById(Empleado e) throws MyDAOExcepcion {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

@@ -18,6 +18,7 @@ public interface TareaDAO {
 	public void insertTarea(Tarea t) throws MyDAOExcepcion;
 	public void deleteTareaById(Tarea t) throws MyDAOExcepcion;
 	public void updateTarea(Tarea t) throws MyDAOExcepcion;
-	public boolean getTareaById(Tarea t) throws MyDAOExcepcion;
+	public boolean validateTarea(Tarea t) throws MyDAOExcepcion;
 	public List<Tarea>  getAllTareas() throws MyDAOExcepcion;	
+	public Tarea getTareaByid (Tarea t) throws MyDAOExcepcion;
 }

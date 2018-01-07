@@ -13,7 +13,6 @@ import implementation.ProyectoDAOImpl;
  *
  */
 
-
 public class ProyectoBO {
 
 	private ProyectoDAO dao;
@@ -21,48 +20,80 @@ public class ProyectoBO {
 	public void altaProyecto(Proyecto p) throws MyDAOExcepcion {
 		dao.insertProyecto(p);
 	}
-	
+
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
-			dao.deleteProyectoById(p);	
+		dao.deleteProyectoById(p);
 	}
-	
-	public void modificarProyecto(Proyecto proyectoToModify)throws MyDAOExcepcion{
-		
+
+	public void modificarProyecto(Proyecto proyectoToModify) throws MyDAOExcepcion {
+
 		boolean checkpoint = true;
-		
+
 		try {
-		
-			if (dao.getProyectoById(proyectoToModify))
-			
-			System.out.println("Hola");
+
+			if (dao.validateProyecto(proyectoToModify))
+
+				System.out.println("Hola");
 		}
-		
-		catch (MyDAOExcepcion e)  {
-			
+
+		catch (MyDAOExcepcion e) {
+
 			checkpoint = false;
 			System.out.println("Hola2");
-			
+
 		}
 
-		if (checkpoint ==true) { 
+		if (checkpoint == true) {
 			System.out.println("Hola3");
-		
-		dao.updateProyecto(proyectoToModify);
+
+			dao.updateProyecto(proyectoToModify);
 		}
 	}
 
-	
-	
-	public List<Proyecto> getProyectos() throws MyDAOExcepcion{
+	public List<Proyecto> getProyectos() throws MyDAOExcepcion {
 		return dao.getAllProyectos();
 	}
 
-	public boolean getProyectoPorId(Proyecto p) throws MyDAOExcepcion{
-		return dao.getProyectoById(p);
+	public boolean validateIfExistsProyecto(Proyecto p) throws MyDAOExcepcion {
+				return dao.validateProyecto(p);
 	}
 	
+	public boolean validateBussinessProyecto (Proyecto p) throws MyDAOExcepcion {
+		
+		
+		
+			if (Proyecto.id == null) {
+
+				try {
+					Proyecto p = new Proyecto(tema, Integer.parseInt(presupuesto));
+					return p;
+				}
+
+				catch (Exception f) {
+
+					throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto. ");
+				}
+			} else if (id != null){
+				try {
+					Proyecto p = new Proyecto(Integer.parseInt(id));
+					return p;
+				}
+
+				catch (Exception f1) {
+
+					throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto.");
+				}
+			}
+			return null;
+		}
+		*/
+
+	
+}
 	public void setDAO(ProyectoDAO proyectoDAO) {
 		this.dao = proyectoDAO;
 	}
-	
+
+
+	}
 }

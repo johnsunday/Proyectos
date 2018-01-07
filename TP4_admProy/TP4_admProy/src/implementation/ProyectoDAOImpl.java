@@ -67,6 +67,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 				p.setId(rs.getInt("id"));
 				p.setTema(rs.getString("Tema"));
 				p.setPresupuesto(rs.getInt("Presupuesto"));
+				p.setEstado(rs.getString("Estado"));
 				resultado.add(p);
 			}
 
@@ -88,7 +89,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 		return resultado;
 	}
 
-	public boolean getProyectoById(Proyecto p) throws MyDAOExcepcion {
+	public boolean validateProyecto(Proyecto p) throws MyDAOExcepcion {
 		String sql = "SELECT 1 FROM proyecto WHERE id= ?";// + p.getId();
 		Connection c = DBManager.getInstance().connect();
 
@@ -122,13 +123,14 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 	}
 
 	public void insertProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "INSERT INTO proyecto (tema, presupuesto) VALUES (?, ?)";
+		String sql = "INSERT INTO proyecto (tema, presupuesto,estado) VALUES (?, ?, ?)";
 		Connection c = DBManager.getInstance().connect();
 
 		try {
 			PreparedStatement s = c.prepareStatement(sql);
 			s.setString(1, p.getTema());
 			s.setInt(2, p.getPresupuesto());
+			s.setString(3, p.getEstado());
 			s.execute();
 			c.commit();
 
@@ -184,6 +186,13 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 				e1.printStackTrace();
 			}
 		}
+	}
+
+		public Proyecto getProyectoById(Proyecto P) throws MyDAOExcepcion {
+
+			
+			
+			return null;
 	}
 
 }

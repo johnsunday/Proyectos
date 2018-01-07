@@ -12,8 +12,19 @@ public class Proyecto {
 	private int id;  
 	private String tema;
 	private int presupuesto;
+	private String estado;
 	
 	
+	public String getEstado() {
+		return estado;
+	}
+
+
+	public void setEstado(String estado) {
+		this.estado = estado;
+	}
+
+
 	public Proyecto(String tema, int presupuesto) {
 		super();
 		this.tema = tema;

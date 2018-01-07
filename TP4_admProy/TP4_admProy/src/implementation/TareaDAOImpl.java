@@ -87,7 +87,7 @@ public class TareaDAOImpl implements TareaDAO{
 		return resultado;
 	}
 
-	public boolean getTareaById(Tarea t) throws MyDAOExcepcion {
+	public boolean validateTarea(Tarea t) throws MyDAOExcepcion {
 		String sql = "SELECT 1 FROM proyecto WHERE id= ?";// + p.getId();
 		Connection c = DBManager.getInstance().connect();
 
@@ -188,6 +188,13 @@ public class TareaDAOImpl implements TareaDAO{
 				e1.printStackTrace();
 			}
 		}
+	}
+
+
+	@Override
+	public Tarea getTareaByid(Tarea t) throws MyDAOExcepcion {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 

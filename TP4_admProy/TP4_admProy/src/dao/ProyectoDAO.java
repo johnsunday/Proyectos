@@ -18,7 +18,8 @@ public interface ProyectoDAO {
 	public void insertProyecto(Proyecto p) throws MyDAOExcepcion;
 	public void deleteProyectoById(Proyecto p) throws MyDAOExcepcion;
 	public void updateProyecto(Proyecto p) throws MyDAOExcepcion;
-	public boolean getProyectoById(Proyecto p) throws MyDAOExcepcion;
+	public boolean validateProyecto(Proyecto p) throws MyDAOExcepcion;
+	public Proyecto getProyectoById (Proyecto p) throws MyDAOExcepcion;
 	public List<Proyecto>  getAllProyectos() throws MyDAOExcepcion;	
 
 }
