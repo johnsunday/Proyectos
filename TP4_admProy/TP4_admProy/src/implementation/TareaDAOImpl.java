@@ -10,11 +10,12 @@ import java.util.List;
 
 import Exceptions.MyDAOExcepcion;
 import basics.DBManager;
+import dao.TareaDAO;
 import entidades.Tarea;
 
-public class TareaDAOImpl {
+public class TareaDAOImpl implements TareaDAO{
 
-	public void deleteProyectoById(Tarea t) throws MyDAOExcepcion {
+	public void deleteTareaById(Tarea t) throws MyDAOExcepcion {
 		String sql = "DELETE FROM tarea WHERE id = ? ";// + p.getId()+ "'";
 		Connection c = DBManager.getInstance().connect();
 
@@ -188,5 +189,6 @@ public class TareaDAOImpl {
 			}
 		}
 	}
+
 
 }
