@@ -156,6 +156,4 @@ public class PanelAltaProyecto extends PanelPadre {
 
 	}
 
-
-
 }

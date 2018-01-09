@@ -123,7 +123,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 	}
 
 	public void insertProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "INSERT INTO proyecto (tema, presupuesto,estado) VALUES (?, ?, ?)";
+		String sql = "INSERT INTO proyecto (tema, presupuesto, estado) VALUES (?, ?, ?)";
 		Connection c = DBManager.getInstance().connect();
 
 		try {

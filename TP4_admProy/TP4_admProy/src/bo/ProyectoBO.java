@@ -20,12 +20,16 @@ public class ProyectoBO {
 
 	public void altaProyecto(Proyecto p) throws MyDAOExcepcion {
 		
-		if (1==1) //AGREGAR VALIDACION DE NEGOCIO
-		dao.insertProyecto(p);
-		else
+		if (p.getPresupuesto() > 0) {
+			//AGREGAR VALIDACION DE NEGOCIO
+			dao.insertProyecto(p);
+		}
+		else {
 			
-			throw new MyDAOExcepcion("POR ALGUN MOTIVO ESTO ESTA MAL");
-	
+			throw new MyDAOExcepcion("El presupuesto del proyecto debe ser mayor a 0");
+		}
+		
+		
 	}
 
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
