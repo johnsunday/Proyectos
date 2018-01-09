@@ -6,6 +6,8 @@ public class Tarea {
 	private String descripcion;
 	private int horas;
 	private String estado;
+	private int proyectoid;
+	private int empleadoid;
 	
 	public String getEstado() {
 		return estado;
@@ -30,8 +32,6 @@ public class Tarea {
 	public void setEmpleadoid(int empleadoid) {
 		this.empleadoid = empleadoid;
 	}
-	private int proyectoid;
-	private int empleadoid;
 	
 	
 

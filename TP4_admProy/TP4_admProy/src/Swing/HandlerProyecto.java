@@ -46,9 +46,14 @@ public class HandlerProyecto {
 		}
 	}
 
-	public void altaProyecto(Proyecto p) throws MyDAOExcepcion {
+	public void altaProyecto(Proyecto p)  {
 
-		proyectoBO.altaProyecto(p);
+		try {
+			proyectoBO.altaProyecto(p);
+		} catch (MyDAOExcepcion e) {
+			// TODO Auto-generated catch block
+			mostrarError(e.getMessage());
+		}
 
 	}
 

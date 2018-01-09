@@ -2,6 +2,7 @@ package bo;
 
 import java.util.List;
 
+
 import Exceptions.MyDAOExcepcion;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
@@ -18,7 +19,13 @@ public class ProyectoBO {
 	private ProyectoDAO dao;
 
 	public void altaProyecto(Proyecto p) throws MyDAOExcepcion {
+		
+		if (1==1) //AGREGAR VALIDACION DE NEGOCIO
 		dao.insertProyecto(p);
+		else
+			
+			throw new MyDAOExcepcion("POR ALGUN MOTIVO ESTO ESTA MAL");
+	
 	}
 
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
