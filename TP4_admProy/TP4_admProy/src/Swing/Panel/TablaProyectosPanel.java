@@ -1,4 +1,4 @@
-package Swing;
+package Swing.Panel;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
@@ -21,6 +21,8 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Exceptions.MyDAOExcepcion;
+import Swing.HandlerProyecto;
+import Swing.ProyectoTableModel;
 import entidades.Proyecto;
 import implementation.ProyectoDAOImpl;
 import javafx.scene.paint.Color;

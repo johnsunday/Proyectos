@@ -5,6 +5,11 @@ import javax.swing.JPanel;
 import java.util.List;
 import Exceptions.MyDAOExcepcion;
 import Exceptions.MyFormatExcepcion;
+import Swing.Frame.MiFrame;
+import Swing.Panel.PanelAltaProyecto;
+import Swing.Panel.PanelBajaProyecto;
+import Swing.Panel.PanelModificarProyecto;
+import Swing.Panel.TablaProyectosPanel;
 import bo.ProyectoBO;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
@@ -13,7 +18,7 @@ import implementation.ProyectoDAOImpl;
 public class HandlerProyecto {
 
 	private ProyectoBO proyectoBO;
-	private FormularioProyecto frame;
+	private MiFrame frame;
 
 	/**
 	 * Se define el handler de proyectos. Es el encargado de tener el codigo a
@@ -84,7 +89,7 @@ public class HandlerProyecto {
 	}
 
 	public void init() {
-		frame = new FormularioProyecto(this);
+		frame = new MiFrame(this);
 		frame.setVisible(true);
 	}
 

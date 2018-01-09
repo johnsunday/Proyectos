@@ -1,4 +1,4 @@
-package Swing;
+package Swing.Frame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -16,6 +16,8 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Swing.HandlerProyecto;
+
 /**
  * Se define un formulario para contener todos los paneles.
  * La estructura del layout es: Form -> Jpanel -> Objetos del panel (Btns, txtBox, etc.)
@@ -23,12 +25,12 @@ import javax.swing.JTextField;
  * 
  *
  */
-public class FormularioProyecto extends JFrame {
+public class MiFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private HandlerProyecto handler;
 
-	public FormularioProyecto(HandlerProyecto handler) {
+	public MiFrame(HandlerProyecto handler) {
 		this.handler = handler;
 		initUI();
 

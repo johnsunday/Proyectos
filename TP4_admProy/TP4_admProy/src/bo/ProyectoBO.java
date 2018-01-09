@@ -55,45 +55,11 @@ public class ProyectoBO {
 	}
 
 	public boolean validateIfExistsProyecto(Proyecto p) throws MyDAOExcepcion {
-				return dao.validateProyecto(p);
+		return dao.validateProyecto(p);
 	}
-	
-	public boolean validateBussinessProyecto (Proyecto p) throws MyDAOExcepcion {
-		
-		
-		
-			if (Proyecto.id == null) {
 
-				try {
-					Proyecto p = new Proyecto(tema, Integer.parseInt(presupuesto));
-					return p;
-				}
-
-				catch (Exception f) {
-
-					throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto. ");
-				}
-			} else if (id != null){
-				try {
-					Proyecto p = new Proyecto(Integer.parseInt(id));
-					return p;
-				}
-
-				catch (Exception f1) {
-
-					throw new MyFormatExcepcion("El valor de uno o varios campos es incorrecto.");
-				}
-			}
-			return null;
-		}
-		*/
-
-	
-}
 	public void setDAO(ProyectoDAO proyectoDAO) {
 		this.dao = proyectoDAO;
 	}
 
-
-	}
 }
