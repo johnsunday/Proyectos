@@ -35,16 +35,17 @@ public class ProyectoBO {
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
 		
 	
-		Proyecto ProyectoCompleto = dao.getProyectoById(p);
+		Proyecto proyectoCompleto = dao.getProyectoById(p);
 		
 		
-		if (ProyectoCompleto.getEstado().equals("Iniciado"))
+		
+		if (proyectoCompleto !=null && "Iniciado".equals(proyectoCompleto.getEstado()))
 		
 		dao.deleteProyectoById(p);
 	
 		else
 			
-			throw new MyDAOExcepcion("Solo se pueden borrar proyectos con Estado 'Iniciado'");
+			throw new MyDAOExcepcion("El Proyecto no existe o tiene un estado invalido");
 	
 	}
 
@@ -53,6 +54,8 @@ public class ProyectoBO {
 		
 
 			dao.updateProyecto(proyectoToModify);
+			
+			//AGREGAR VALIDACION DE NEGOCIO
 	}
 
 	public List<Proyecto> getProyectos() throws MyDAOExcepcion {
