@@ -50,7 +50,7 @@ public class HandlerProyecto {
 
 		try {
 			proyectoBO.altaProyecto(p);
-			mostrarExito("Proyecto agregado con exito");
+			mostrarExito("Proyecto agregado con exito.");
 		} catch (MyDAOExcepcion e) {
 			// TODO Auto-generated catch block
 			mostrarError(e.getMessage());
@@ -58,12 +58,13 @@ public class HandlerProyecto {
 
 	}
 
-	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
+	public void bajaProyecto(Proyecto p)  {
 		
 		try {
 		proyectoBO.bajaProyecto(p);
+		mostrarExito("Proyecto borrado con exito.");
 		} catch (MyDAOExcepcion e){
-			throw e;
+			mostrarError(e.getMessage());
 		}
 		
 	}

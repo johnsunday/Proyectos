@@ -126,7 +126,7 @@ public class PanelAltaProyecto extends PanelPadre {
 
 						presupuesto = Integer.parseInt(txtPresupuesto.getText());
 
-					Proyecto p = new Proyecto(txtTema.getText(), presupuesto);
+					Proyecto p = new Proyecto(txtTema.getText(), presupuesto,"Iniciado");
 
 					handler.altaProyecto(p);
 

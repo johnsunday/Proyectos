@@ -11,6 +11,7 @@ import java.util.List;
 import Exceptions.MyDAOExcepcion;
 import basics.DBManager;
 import dao.ProyectoDAO;
+
 import entidades.Proyecto;
 
 /**
@@ -89,38 +90,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 		return resultado;
 	}
 
-	public boolean validateProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "SELECT 1 FROM proyecto WHERE id= ?";// + p.getId();
-		Connection c = DBManager.getInstance().connect();
-
-		int result = -1;
-		
-		try {
-			PreparedStatement s = c.prepareStatement(sql);
-			s.setInt(1, p.getId());
-			result = s.executeUpdate();
-		} catch (SQLException e) {
-			try {
-				c.rollback();
-				e.printStackTrace();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-				throw new MyDAOExcepcion("Hubo un problema en la busqueda, por favor revise.");
-			}
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		}
-
-		if (result < 1) {
-			return false;
-		}
-
-		return true;
-	}
+	
 
 	public void insertProyecto(Proyecto p) throws MyDAOExcepcion {
 		String sql = "INSERT INTO proyecto (tema, presupuesto, estado) VALUES (?, ?, ?)";
@@ -188,11 +158,28 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 		}
 	}
 
-		public Proyecto getProyectoById(Proyecto P) throws MyDAOExcepcion {
-
-			
-			
-			return null;
+	public Proyecto getProyectoById(Proyecto p) throws MyDAOExcepcion{
+		String sql = "SELECT * FROM PROYECTO where id = " + p.getId();
+		Connection c = DBManager.getInstance().connect();
+		try {
+			Proyecto proyecto = new Proyecto();
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				
+				proyecto.setId(rs.getInt("id"));
+				proyecto.setTema(rs.getString("tema"));
+				proyecto.setEstado(rs.getString("estado"));
+				
+				
+				return proyecto;
+			}				
+		} catch (SQLException e) {
+				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+			}finally {
+				try {c.close();}
+				catch(SQLException e1){}}
+		return null;
 	}
 
 }

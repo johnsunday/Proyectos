@@ -118,45 +118,9 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
 	}
 
-	@Override
-	public boolean validateEmpleado(Empleado e) throws MyDAOExcepcion {
 	
 
-		String sql = "SELECT 1 FROM Empleado WHERE id= ?";// + p.getId();
-		Connection c = DBManager.getInstance().connect();
-
-		int result = -1;
-		
-		try {
-			PreparedStatement s = c.prepareStatement(sql);
-			s.setInt(1, e.getLegajo());
-			result = s.executeUpdate();
-		} catch (SQLException excep) {
-			try {
-				c.rollback();
-				excep.printStackTrace();
-			} catch (SQLException excep1) {
-				excep1.printStackTrace();
-				throw new MyDAOExcepcion("Hubo un problema en la busqueda, por favor revise.");
-			}
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException excep) {
-				excep.printStackTrace();
-			}
-		}
-
-		if (result < 1) {
-			return false;
-		}
-
-		return true;
-
 	
-	
-	}
-
 	@Override
 	public List<Empleado> getAllEmpleados() throws MyDAOExcepcion {
 		List<Empleado> resultado = new ArrayList<Empleado>();

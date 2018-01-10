@@ -25,7 +25,7 @@ import entidades.Proyecto;
  * En su contructor, el panel espera un handler, que proviene desde el form. 
  *
  */
-public class PanelBajaProyecto extends JPanel {
+public class PanelBajaProyecto extends PanelPadre {
 
 	private static final long serialVersionUID = 1L;
 
@@ -99,21 +99,26 @@ public class PanelBajaProyecto extends JPanel {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				try {
-					Proyecto p = handler.validarProyecto(txtId.getText(), null, null);
-					try {
-						
-						handler.bajaProyecto(p);
-						handler.mostrarExito("El proyecto ha sido eliminado");
-						
-					} catch (MyDAOExcepcion e) {
+				if (validarCampo(txtId))
 					
-						handler.mostrarError(e.getMessage());
-					} 
-				} catch (MyFormatExcepcion e1){
-					handler.mostrarError(e1.getMessage());
+				{
+					handler.mostrarError("Por favor complete todos los campos.");
 					
 				}
+				
+				else
+					
+					if (validarNumero(txtId.getText(), "id")) {
+						
+						int id=1;
+						
+						id = Integer.parseInt(txtId.getText());
+
+						Proyecto p = new Proyecto(id);
+
+						handler.bajaProyecto(p);
+						
+					}
 				
 				
 			}

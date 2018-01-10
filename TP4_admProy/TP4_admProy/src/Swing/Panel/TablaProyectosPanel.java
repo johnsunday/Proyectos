@@ -149,23 +149,17 @@ public class TablaProyectosPanel extends JPanel {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());
-				try {
-					
-					int seleccion = JOptionPane.showOptionDialog( null,"¿Desea eliminar el Proyecto ID: " 
-					+ p.getId() + ", Tema: " + p.getTema() + ", Presupuesto: " + p.getPresupuesto()+" ?"  ,
-							  "Confirma Eliminacion:",JOptionPane.YES_NO_OPTION,
-							   JOptionPane.QUESTION_MESSAGE,null,// null para icono por defecto.
-							  new Object[] { "Si", "No"},null);
-							      
-							 if (seleccion == 0){
-									handler.bajaProyecto(p);
-									handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
-									handler.verProyectos();
-							 }
-
-				} catch (MyDAOExcepcion e) {
-					handler.mostrarError(e.getMessage());
-				}
+				int seleccion = JOptionPane.showOptionDialog( null,"¿Desea eliminar el Proyecto ID: " 
+				+ p.getId() + ", Tema: " + p.getTema() + ", Presupuesto: " + p.getPresupuesto()+" ?"  ,
+						  "Confirma Eliminacion:",JOptionPane.YES_NO_OPTION,
+						   JOptionPane.QUESTION_MESSAGE,null,// null para icono por defecto.
+						  new Object[] { "Si", "No"},null);
+						      
+						 if (seleccion == 0){
+								handler.bajaProyecto(p);
+								handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
+								handler.verProyectos();
+						 }
 				
 
 			}

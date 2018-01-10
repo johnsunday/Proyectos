@@ -33,41 +33,33 @@ public class ProyectoBO {
 	}
 
 	public void bajaProyecto(Proyecto p) throws MyDAOExcepcion {
+		
+	
+		Proyecto ProyectoCompleto = dao.getProyectoById(p);
+		
+		
+		if (ProyectoCompleto.getEstado().equals("Iniciado"))
+		
 		dao.deleteProyectoById(p);
+	
+		else
+			
+			throw new MyDAOExcepcion("Solo se pueden borrar proyectos con Estado 'Iniciado'");
+	
 	}
 
 	public void modificarProyecto(Proyecto proyectoToModify) throws MyDAOExcepcion {
 
-		boolean checkpoint = true;
-
-		try {
-
-			if (dao.validateProyecto(proyectoToModify))
-
-				System.out.println("Hola");
-		}
-
-		catch (MyDAOExcepcion e) {
-
-			checkpoint = false;
-			System.out.println("Hola2");
-
-		}
-
-		if (checkpoint == true) {
-			System.out.println("Hola3");
+		
 
 			dao.updateProyecto(proyectoToModify);
-		}
 	}
 
 	public List<Proyecto> getProyectos() throws MyDAOExcepcion {
 		return dao.getAllProyectos();
 	}
 
-	public boolean validateIfExistsProyecto(Proyecto p) throws MyDAOExcepcion {
-		return dao.validateProyecto(p);
-	}
+	
 
 	public void setDAO(ProyectoDAO proyectoDAO) {
 		this.dao = proyectoDAO;

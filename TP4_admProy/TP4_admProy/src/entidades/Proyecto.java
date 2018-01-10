@@ -25,10 +25,10 @@ public class Proyecto {
 	}
 
 
-	public Proyecto(String tema, int presupuesto) {
-		super();
+	public Proyecto(String tema, int presupuesto, String estado) {
 		this.tema = tema;
 		this.presupuesto = presupuesto;
+		this.estado = estado;
 	}
 	
 	

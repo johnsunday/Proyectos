@@ -87,38 +87,7 @@ public class TareaDAOImpl implements TareaDAO{
 		return resultado;
 	}
 
-	public boolean validateTarea(Tarea t) throws MyDAOExcepcion {
-		String sql = "SELECT 1 FROM proyecto WHERE id= ?";// + p.getId();
-		Connection c = DBManager.getInstance().connect();
-
-		int result = -1;
-		
-		try {
-			PreparedStatement s = c.prepareStatement(sql);
-			s.setInt(1, t.getId());
-			result = s.executeUpdate();
-		} catch (SQLException e) {
-			try {
-				c.rollback();
-				e.printStackTrace();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-				throw new MyDAOExcepcion("Hubo un problema en la busqueda, por favor revise.");
-			}
-		} finally {
-			try {
-				c.close();
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			}
-		}
-
-		if (result < 1) {
-			return false;
-		}
-
-		return true;
-	}
+	
 
 	public void insertTarea(Tarea t) throws MyDAOExcepcion {
 		String sql = "INSERT INTO tarea (descripcion, proyecto, horas, empleado, estado) VALUES (?, ?, ?, ?, ?)";
