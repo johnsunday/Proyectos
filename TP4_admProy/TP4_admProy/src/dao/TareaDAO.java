@@ -7,6 +7,7 @@ import Exceptions.MyDAOExcepcion;
 import java.util.Collection;
 
 import entidades.Tarea;
+import entidades.Empleado;
 
 /**
  * Definimos la interface DAO, desde aca hacemos la implementacion para establecer con lenguaje SQL 
@@ -18,7 +19,8 @@ public interface TareaDAO {
 	public void insertTarea(Tarea t) throws MyDAOExcepcion;
 	public void deleteTareaById(Tarea t) throws MyDAOExcepcion;
 	public void updateTarea(Tarea t) throws MyDAOExcepcion;
-
-	public List<Tarea>  getAllTareas() throws MyDAOExcepcion;	
+	public List<Tarea> getAllTareas() throws MyDAOExcepcion;	
 	public Tarea getTareaByid (Tarea t) throws MyDAOExcepcion;
+	public List<Tarea> getTareaByEmpleadoId(Empleado e) throws MyDAOExcepcion;
 }
+

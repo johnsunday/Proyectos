@@ -16,6 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Swing.HandlerEmpleado;
 import Swing.HandlerProyecto;
 
 /**
@@ -29,11 +30,16 @@ public class MiFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private HandlerProyecto handler;
+	private HandlerEmpleado handlerEmpleado;
 
 	public MiFrame(HandlerProyecto handler) {
 		this.handler = handler;
 		initUI();
+	}
 
+	public MiFrame(HandlerEmpleado handlerEmpleado) {
+		this.handlerEmpleado = handlerEmpleado;
+		initUI();
 	}
 
 	private void initUI() {
@@ -49,15 +55,15 @@ public class MiFrame extends JFrame {
 		JMenuItem miBajaProyecto;
 		JMenuItem miModificacionProyecto;
 
-		JMenuItem miAltaPersonas;
-		JMenuItem miBajaPersonas;
-		JMenuItem miModificacionPersonas;
+		JMenuItem miAltaEmpleado;
+		JMenuItem miBajaEmpleado;
+		JMenuItem miModificacionEmpleado;
 
 		JMenuItem miAltaReportes;
 		JMenuItem miBajaReportes;
 		JMenuItem miModificacionReportes;
 		JMenu mproyecto;
-		JMenu mpersonas;
+		JMenu mEmpleado;
 		JMenu mreportes;
 
 		mb = new JMenuBar();
@@ -66,21 +72,21 @@ public class MiFrame extends JFrame {
 		miBajaProyecto = new JMenuItem("Baja");
 		miModificacionProyecto = new JMenuItem("Ver/Modificar/Eliminar");
 
-		miAltaPersonas = new JMenuItem("Alta");
-		miBajaPersonas = new JMenuItem("Baja");
-		miModificacionPersonas = new JMenuItem("Modificacion");
+		miAltaEmpleado = new JMenuItem("Alta");
+		miBajaEmpleado = new JMenuItem("Baja");
+		miModificacionEmpleado = new JMenuItem("Modificacion");
 
 		miAltaReportes = new JMenuItem("Alta");
 		miBajaReportes = new JMenuItem("Baja");
 		miModificacionReportes = new JMenuItem("Modificacion");
 
-		// MENU DE PERSONAS //
+		// MENU DE EMPLEADO //
 
-		mpersonas = new JMenu();
-		mpersonas.setText("Personas");
-		mpersonas.add(miAltaPersonas);
-		mpersonas.add(miBajaPersonas);
-		mpersonas.add(miModificacionPersonas);
+		mEmpleado = new JMenu();
+		mEmpleado.setText("Empleado");
+		mEmpleado.add(miAltaEmpleado);
+		mEmpleado.add(miBajaEmpleado);
+		mEmpleado.add(miModificacionEmpleado);
 
 		// MENU DE PROYECTO//
 		mproyecto = new JMenu();
@@ -96,7 +102,7 @@ public class MiFrame extends JFrame {
 		mreportes.add(miBajaReportes);
 		mreportes.add(miModificacionReportes);
 
-		mb.add(mpersonas);
+		mb.add(mEmpleado);
 		mb.add(mproyecto);
 		mb.add(mreportes);
 
@@ -131,7 +137,38 @@ public class MiFrame extends JFrame {
 
 	});
 	
+		
+	// PANEL DE EMPLEADOS //
+		miAltaEmpleado.addActionListener(new ActionListener() {
 
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				handler.mostrarAltaProyecto();
+			}
+
+		});
+
+		miBajaEmpleado.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				handler.mostrarBajaProyecto();
+			}
+
+		});
+		
+		miModificacionEmpleado.addActionListener(new ActionListener() {
+	
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			handler.verProyectos();
+		}
+
+	});
+
+		
 	}
 	
 	/**

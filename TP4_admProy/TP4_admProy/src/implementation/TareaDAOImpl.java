@@ -11,6 +11,8 @@ import java.util.List;
 import Exceptions.MyDAOExcepcion;
 import basics.DBManager;
 import dao.TareaDAO;
+import entidades.Empleado;
+import entidades.Proyecto;
 import entidades.Tarea;
 
 public class TareaDAOImpl implements TareaDAO{
@@ -162,9 +164,58 @@ public class TareaDAOImpl implements TareaDAO{
 
 	@Override
 	public Tarea getTareaByid(Tarea t) throws MyDAOExcepcion {
-		// TODO Auto-generated method stub
+		String sql = "SELECT * FROM TAREA where id = " + t.getId();
+		Connection c = DBManager.getInstance().connect();
+		try {
+			Tarea tarea = new Tarea();
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				
+				t.setId(rs.getInt("id"));
+				t.setDescripcion(rs.getString("descripcion"));
+				t.setHoras(rs.getInt("hora"));
+				t.setEstado(rs.getString("estado"));
+				t.setProyectoid(rs.getInt("proyecto"));
+				t.setEmpleadoid(rs.getInt("empleado"));
+				
+				return t;
+			}				
+		} catch (SQLException e) {
+				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+			}finally {
+				try {c.close();}
+				catch(SQLException e1){}}
 		return null;
+		
 	}
 
+	
+	public List<Tarea> getTareaByEmpleadoId(Empleado emp) throws MyDAOExcepcion {
+		List<Tarea> resultado = new ArrayList<Tarea>();
+		String sql = "Select * FROM tarea WHERE empleado= ? ";// + p.getId()+ "'";
+		Connection c = DBManager.getInstance().connect();
+		try {
+			Tarea t = new Tarea();
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				
+				t.setId(rs.getInt("id"));
+				t.setDescripcion(rs.getString("descripcion"));
+				t.setHoras(rs.getInt("hora"));
+				t.setEstado(rs.getString("estado"));
+				t.setProyectoid(rs.getInt("proyecto"));
+				t.setEmpleadoid(rs.getInt("empleado"));
+				
+				resultado.add(t);
+			}				
+		} catch (SQLException e) {
+				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+			}finally {
+				try {c.close();}
+				catch(SQLException e1){}}
+		return resultado;
+	}
 
 }
