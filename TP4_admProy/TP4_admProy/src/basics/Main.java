@@ -5,6 +5,11 @@ import Swing.HandlerProyecto;
 import dao.ProyectoDAO;
 import implementation.ProyectoDAOImpl;
 
+import Swing.HandlerEmpleado;
+import dao.EmpleadoDAO;
+import implementation.EmpleadoDAOImpl;
+
+
 public class Main {
 
 	public static void main(String[] args) {
@@ -28,6 +33,9 @@ public class Main {
 
 		HandlerProyecto handler = new HandlerProyecto();
 		handler.init();
+
+		HandlerEmpleado handlerEmp = new HandlerEmpleado();
+		handlerEmp.init();
 
 	}
 

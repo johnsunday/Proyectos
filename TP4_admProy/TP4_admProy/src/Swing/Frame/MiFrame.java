@@ -143,7 +143,7 @@ public class MiFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				handler.mostrarAltaProyecto();
+				handlerEmpleado.mostrarAltaEmpleado();
 			}
 
 		});
@@ -153,7 +153,7 @@ public class MiFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				handler.mostrarBajaProyecto();
+				handlerEmpleado.mostrarBajaEmpleado();
 			}
 
 		});
@@ -163,7 +163,7 @@ public class MiFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			handler.verProyectos();
+			handlerEmpleado.verEmpleados();
 		}
 
 	});
@@ -188,7 +188,6 @@ public class MiFrame extends JFrame {
 	public void cerrarPanel() {
 
 		this.getContentPane().removeAll();
-		//this.getContentPane().revalidate();
 		this.getContentPane().repaint();
 		
 	}

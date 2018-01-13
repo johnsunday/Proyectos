@@ -160,8 +160,26 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 	}
 
 	@Override
-	public Empleado getEmpleadoById(Empleado e) throws MyDAOExcepcion {
-		// TODO Auto-generated method stub
+	public Empleado getEmpleadoById(Empleado emp) throws MyDAOExcepcion {
+		String sql = "SELECT * FROM EMPLEADO where id = " + emp.getLegajo();
+		Connection c = DBManager.getInstance().connect();
+		try {
+			Empleado empleado= new Empleado();
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				
+				empleado.setLegajo(rs.getInt("legajo"));
+				empleado.setNombreCompleto(rs.getString("nombreCompleto"));
+				empleado.setSueldoHora(rs.getInt("sueldoHora"));
+				
+				return empleado;
+			}				
+		} catch (SQLException e) {
+				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+			}finally {
+				try {c.close();}
+				catch(SQLException e1){}}
 		return null;
 	}
 

@@ -21,7 +21,7 @@ public class HandlerEmpleado {
 	private MiFrame frame;
 
 	/**
-	 * Se define el handler de proyectos. Es el encargado de tener el codigo a
+	 * Se define el handler de empleado. Es el encargado de tener el codigo a
 	 * ejecutar para cada uno de los action Listener. Es decir, cada accion del
 	 * usuario, esta relacionada a uno o mas metodos del handler.
 	 */
@@ -30,11 +30,11 @@ public class HandlerEmpleado {
 		EmpleadoBO.setDAO(new EmpleadoDAOImpl());
 	}
 
-	public void mostrarAltaProyecto() {
+	public void mostrarAltaEmpleado() {
 		frame.cambiarPanel(new PanelAltaEmpleado(this));
 	}
 
-	public void mostrarBajaProyecto() {
+	public void mostrarBajaEmpleado() {
 		frame.cambiarPanel(new PanelBajaEmpleado(this));
 	}
 
@@ -66,7 +66,6 @@ public class HandlerEmpleado {
 		} catch (MyDAOExcepcion e){
 			mostrarError(e.getMessage());
 		}
-		
 	}
 
 	public void mostrarEmpleados() throws MyDAOExcepcion {
@@ -92,7 +91,6 @@ public class HandlerEmpleado {
 
 		JOptionPane.showMessageDialog(null, mensaje);
 		
-
 	}
 
 	public void init() {
@@ -103,7 +101,5 @@ public class HandlerEmpleado {
 	public void cerrarPanel() {
 		frame.cerrarPanel();
 	}
-
-
 
 }
