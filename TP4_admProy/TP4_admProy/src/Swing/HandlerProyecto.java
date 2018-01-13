@@ -103,6 +103,8 @@ public class HandlerProyecto {
 	public void cerrarPanel() {
 		frame.cerrarPanel();
 	}
+	
+	
 
 
 

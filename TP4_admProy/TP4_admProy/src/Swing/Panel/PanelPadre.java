@@ -5,6 +5,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Swing.HandlerProyecto;
+import javafx.scene.control.ComboBox;
 
 public abstract class PanelPadre extends JPanel {
 	
@@ -41,6 +42,11 @@ public abstract class PanelPadre extends JPanel {
 	
 	public boolean validarCampo(JTextField campo){
 		return campo.getText().isEmpty();
+		
+		
+		
+		
+	
 	}
 	
 }
