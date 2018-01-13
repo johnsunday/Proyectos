@@ -25,6 +25,7 @@ public class HandlerEmpleado {
 	 * ejecutar para cada uno de los action Listener. Es decir, cada accion del
 	 * usuario, esta relacionada a uno o mas metodos del handler.
 	 */
+	
 	public HandlerEmpleado() {
 		EmpleadoBO = new EmpleadoBO();
 		EmpleadoBO.setDAO(new EmpleadoDAOImpl());

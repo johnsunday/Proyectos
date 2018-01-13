@@ -1,11 +1,11 @@
 package basics;
 
 import Exceptions.MyDAOExcepcion;
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
+
 import dao.ProyectoDAO;
 import implementation.ProyectoDAOImpl;
 
-import Swing.HandlerEmpleado;
 import dao.EmpleadoDAO;
 import implementation.EmpleadoDAOImpl;
 
@@ -30,12 +30,9 @@ public class Main {
 		TableManager tmempleado= new TableManager();
 		tmempleado.createEmpleadoTable();
 
-
-		HandlerProyecto handler = new HandlerProyecto();
+		HandlerGeneral handler = new HandlerGeneral();
 		handler.init();
 
-		HandlerEmpleado handlerEmp = new HandlerEmpleado();
-		handlerEmp.init();
 
 	}
 

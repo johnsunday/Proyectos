@@ -16,8 +16,7 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Swing.HandlerEmpleado;
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
 
 /**
  * Se define un formulario para contener todos los paneles.
@@ -29,19 +28,27 @@ import Swing.HandlerProyecto;
 public class MiFrame extends JFrame {
 
 	private static final long serialVersionUID = 1L;
-	private HandlerProyecto handler;
-	private HandlerEmpleado handlerEmpleado;
+	private HandlerGeneral handler;
+	
+
+/*	
+	public MiFrame(handlerGeneral handlerGeneral) {
+		this.handlerGeneral = handlerGeneral;
+		initUI();
+	}
 
 	public MiFrame(HandlerProyecto handler) {
 		this.handler = handler;
 		initUI();
 	}
-
-	public MiFrame(HandlerEmpleado handlerEmpleado) {
-		this.handlerEmpleado = handlerEmpleado;
+*/
+	
+	public MiFrame(HandlerGeneral handler) {
+		this.handler=handler;
 		initUI();
 	}
 
+	
 	private void initUI() {
 
 		this.setTitle("Haunstetter & Ortiz - Project Management Tool");
@@ -143,7 +150,7 @@ public class MiFrame extends JFrame {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
-				handlerEmpleado.mostrarAltaEmpleado();
+				handler.mostrarAltaEmpleado();
 			}
 
 		});
@@ -153,7 +160,7 @@ public class MiFrame extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				handlerEmpleado.mostrarBajaEmpleado();
+				handler.mostrarBajaEmpleado();
 			}
 
 		});
@@ -163,7 +170,7 @@ public class MiFrame extends JFrame {
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 
-			handlerEmpleado.verEmpleados();
+			handler.verEmpleados();
 		}
 
 	});

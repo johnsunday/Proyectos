@@ -4,7 +4,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
+import Swing.HandlerEmpleado;
+
 import javafx.scene.control.ComboBox;
 
 public abstract class PanelPadre extends JPanel {
@@ -13,8 +15,8 @@ public abstract class PanelPadre extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	public HandlerProyecto handler;
-	
+	public HandlerGeneral handler;
+	public HandlerEmpleado handlerEmpleado;
 	
 	
 	public boolean validarNumero(String numbers, String campo) {

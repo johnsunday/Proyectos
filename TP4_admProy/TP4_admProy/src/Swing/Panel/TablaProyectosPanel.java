@@ -21,7 +21,7 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import Exceptions.MyDAOExcepcion;
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;
 import entidades.Proyecto;
 import implementation.ProyectoDAOImpl;
@@ -41,7 +41,7 @@ public class TablaProyectosPanel extends JPanel {
 	private JButton botonCancelar;
 	private JTextField nombreProyecto = new JTextField("Nombre", 6);
 	private JTextField proyectoID = new JTextField("0", 2);
-	private HandlerProyecto handler;
+	private HandlerGeneral handler;
 
 	
 	/**
@@ -49,7 +49,7 @@ public class TablaProyectosPanel extends JPanel {
 	 * Como todos los paneles, recibe el handler, pero ademas aca le enviamos el list de proyectos. 
 	 */
 	
-	public TablaProyectosPanel(HandlerProyecto handler, List<Proyecto> proyectos) {
+	public TablaProyectosPanel(HandlerGeneral handler, List<Proyecto> proyectos) {
 		//super();
 		this.handler = handler;
 		initUI(proyectos);

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Exceptions.MyDAOExcepcion;
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
 import entidades.Proyecto;
 
 /**
@@ -46,9 +46,9 @@ public class PanelModificarProyecto extends PanelPadre {
 	
 	JComboBox<String> estadosCombo = new JComboBox<>(estadosProyecto);
 
-	private HandlerProyecto handler;
+	private HandlerGeneral handler;
 
-	public PanelModificarProyecto(HandlerProyecto handler, Proyecto p) {
+	public PanelModificarProyecto(HandlerGeneral handler, Proyecto p) {
 		this.handler = handler;
 		this.p = p;
 		initUI();

@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 
 import Exceptions.MyDAOExcepcion;
 import Exceptions.MyFormatExcepcion;
-import Swing.HandlerProyecto;
+import Swing.HandlerGeneral;
 import entidades.Proyecto;
 
 /**
@@ -41,9 +41,9 @@ public class PanelAltaProyecto extends PanelPadre {
 	private JTextField txtTema;
 	private JTextField txtPresupuesto;
 
-	private HandlerProyecto handler;
+	private HandlerGeneral handler;
 
-	public PanelAltaProyecto(HandlerProyecto handler) {
+	public PanelAltaProyecto(HandlerGeneral handler) {
 		this.handler = handler;
 		initUI();
 	}
