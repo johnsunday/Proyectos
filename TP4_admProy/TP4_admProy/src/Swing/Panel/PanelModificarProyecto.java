@@ -42,7 +42,7 @@ public class PanelModificarProyecto extends PanelPadre {
 	private JTextField txtTema;
 	private JTextField txtPresupuesto;
 	private String[] estadosProyecto = new String[]
-			{ "Iniciado.", "En proceso.", "Cancelado.", "Finalizado" };
+			{ "Iniciado.", "En proceso.", "Cancelado.", "Finalizado." };
 	
 	JComboBox<String> estadosCombo = new JComboBox<>(estadosProyecto);
 
@@ -124,12 +124,14 @@ public class PanelModificarProyecto extends PanelPadre {
 
 		txtTema.setText(p.getTema());
 		txtPresupuesto.setText(String.valueOf(p.getPresupuesto()));
-		// estadosCombo.setSelectedItem(p.getEstado());
+		estadosCombo.setSelectedItem(p.getEstado());
 
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+				handler.mostrarExito(p.getEstado());
 
 				if (validarCampo(txtTema) || validarCampo(txtPresupuesto))
 
@@ -139,7 +141,8 @@ public class PanelModificarProyecto extends PanelPadre {
 					Proyecto proyectoToModify = new Proyecto(
 							txtTema.getText(),
 							Integer.parseInt(txtPresupuesto.getText()), 
-							estadosCombo.getSelectedItem().toString()
+							"Terminado"
+							//estadosCombo.getSelectedItem().toString()
 
 					);
 

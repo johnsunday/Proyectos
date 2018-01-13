@@ -124,7 +124,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 
 	@Override
 	public void updateProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "UPDATE proyecto SET tema=  ? , presupuesto = ? where id= ? ";// + p.getTema() +"'"+", "+
+		String sql = "UPDATE proyecto SET tema=  ? , presupuesto = ? , estado = ? where id= ? ";// + p.getTema() +"'"+", "+
 																					// "presupuesto=" +
 																					// p.getPresupuesto() + " WHERE id
 																					// ="+ p.getId();
@@ -135,7 +135,8 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 
 			ps.setString(1, p.getTema());
 			ps.setInt(2, p.getPresupuesto());
-			ps.setInt(3, p.getId());
+			ps.setString(3, p.getEstado());
+			ps.setInt(4, p.getId());
 
 			ps.executeUpdate();
 
