@@ -14,36 +14,40 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import Exceptions.MyDAOExcepcion;
-import Exceptions.MyFormatExcepcion;
 import Swing.HandlerGeneral;
 import entidades.Empleado;
 
 /**
- * Definimos el layout para el panel necesario al dar de alta un empleado. Cada
- * vez que necesitamos mostrar un panel para el alta de proyectos, directamente
- * llamamos a esta clase. En su contructor, el panel espera un handler, que
- * proviene desde el form.
+ * Definimos el layout para el panel necesario para la modif de un Empleado.
+ * Cada vez que necesitamos mostrar un panel para la modif de Empleados,
+ * directamente llamamos a esta clase. En su contructor, el panel espera un
+ * handler, y una instancia de Empleado, desde el cual se tomaran los datos para
+ * su modificacion.
  *
  */
-
-public class PanelAltaEmpleado extends PanelPadre {
+public class PanelModificarEmpleado extends PanelPadre {
 
 	private static final long serialVersionUID = 1L;
 
 	private JButton botonAceptar;
 	private JButton botonCancelar;
+
+	private Empleado p;
 	
-	private JLabel lblTitulo;
+	private JLabel lblTema;
+	private JLabel lblLegajo;
 	private JLabel lblNombreCompleto;
 	private JLabel lblSueldoHora;
-
+	
+	private JTextField txtLegajo;
 	private JTextField txtNombreCompleto;
 	private JTextField txtSueldoHora;
-
+	
 	private HandlerGeneral handler;
 
-	public PanelAltaEmpleado(HandlerGeneral handler) {
+	public PanelModificarEmpleado(HandlerGeneral handler, Empleado p) {
 		this.handler = handler;
+		this.p = p;
 		initUI();
 	}
 
@@ -52,86 +56,92 @@ public class PanelAltaEmpleado extends PanelPadre {
 		botonAceptar = new JButton("Aceptar");
 		botonCancelar = new JButton("Cancelar");
 		
-		lblTitulo = new JLabel("Alta de empleados");
+		lblTema = new JLabel("Modificacion de Empleados");
+		lblLegajo = new JLabel("Legajo :");
+		lblNombreCompleto = new JLabel("NombreCompleto:");
+		lblSueldoHora = new JLabel("SueldoHora: ");
 		
-		lblNombreCompleto = new JLabel("Nombre Completo:");
-		lblSueldoHora = new JLabel("Sueldo por hora:");
-		
+		txtLegajo = new JTextField("");
 		txtNombreCompleto = new JTextField("");
 		txtSueldoHora = new JTextField("");
 		
+		txtLegajo.setMaximumSize(new Dimension(450, 30));
 		txtNombreCompleto.setMaximumSize(new Dimension(450, 30));
 		txtSueldoHora.setMaximumSize(new Dimension(450, 30));
 
-		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		
-		JPanel rowTitulo = new JPanel();
+		JPanel rowLegajo = new JPanel();
+		JPanel rowTema = new JPanel();
 		JPanel rowNombreCompleto = new JPanel();
 		JPanel rowSueldoHora = new JPanel();
 		JPanel rowBotones = new JPanel();
 
-		rowTitulo.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		
+		// rowTema.setLayout(new BoxLayout(rowTema, BoxLayout.X_AXIS));
+		rowLegajo.setLayout(new BoxLayout(rowLegajo, BoxLayout.X_AXIS));
 		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
 		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
-		
-		rowSueldoHora.setLayout(new BoxLayout(rowSueldoHora, BoxLayout.X_AXIS));
-		rowSueldoHora.setLayout(new BoxLayout(rowSueldoHora, BoxLayout.X_AXIS));
-		
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
 
-		rowTitulo.add(Box.createHorizontalStrut(10));
+		rowLegajo.add(Box.createHorizontalStrut(10));
+		// rowTema.add(Box.createHorizontalStrut(10));
 		rowNombreCompleto.add(Box.createHorizontalStrut(10));
-		rowSueldoHora.add(Box.createHorizontalStrut(10));
-		
+		rowNombreCompleto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 
-		lblTitulo.setFont((new Font("Arial", Font.BOLD, 17)));
+		lblTema.setFont((new Font("Arial", Font.BOLD, 17)));
+		lblTema.setForeground(Color.LIGHT_GRAY);
 
-		lblTitulo.setForeground(Color.LIGHT_GRAY);
-
-		rowTitulo.add(lblTitulo);
+		rowLegajo.add(lblLegajo);
+		//rowTema.add(lblTema);
 		rowNombreCompleto.add(lblNombreCompleto);
 		rowSueldoHora.add(lblSueldoHora);
-		
 		rowBotones.add(botonAceptar);
 
-		rowNombreCompleto.add(Box.createHorizontalStrut(10));
-		rowSueldoHora.add(Box.createHorizontalStrut(10));
-		
-		rowBotones.add(Box.createHorizontalStrut(10));
 
+		rowLegajo.add(Box.createHorizontalStrut(10));
+		rowNombreCompleto.add(Box.createHorizontalStrut(10));
+		rowBotones.add(Box.createHorizontalStrut(10));
+		rowSueldoHora.add(Box.createHorizontalStrut(10));
+
+		rowLegajo.add(txtLegajo);
 		rowNombreCompleto.add(txtNombreCompleto);
 		rowSueldoHora.add(txtSueldoHora);
-		
 		rowBotones.add(botonCancelar);
 
+		rowLegajo.add(Box.createHorizontalStrut(10));
 		rowNombreCompleto.add(Box.createHorizontalStrut(10));
-		rowSueldoHora.add(Box.createHorizontalStrut(10));
-		
 		rowBotones.add(Box.createHorizontalStrut(10));
+		rowSueldoHora.add(Box.createHorizontalStrut(10));
+
+		txtLegajo.setText(String.valueOf(p.getLegajo()));
+		txtNombreCompleto.setText(String.valueOf(p.getNombreCompleto()));
+		txtSueldoHora.setText(String.valueOf(p.getSueldoHora()));
 
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
+				
+//				handler.mostrarExito(p.getNombreCompleto());
 
-				if (validarCampo(txtNombreCompleto) || validarCampo(txtSueldoHora))
+				if (validarCampo(txtSueldoHora) || validarCampo(txtNombreCompleto))
 
 					handler.mostrarError("Por favor complete todos los campos.");
-
 				else {
-					int sueldoHora =1;						
-					sueldoHora = Integer.parseInt(txtSueldoHora.getText());
-					
-					Empleado emp = new Empleado(sueldoHora, txtNombreCompleto.getText());
 
-					handler.altaEmpleado(emp);
+					Empleado EmpleadoToModify = new Empleado(
+							Integer.valueOf(txtLegajo.getText()), Integer.valueOf(txtSueldoHora.getText()), txtNombreCompleto.getText());
+
+					try {
+						handler.modificarEmpleado(EmpleadoToModify);
+						handler.mostrarExito("El Empleado " + EmpleadoToModify.getNombreCompleto() + " fue modificado.");
+						handler.verEmpleados();
+					} catch (MyDAOExcepcion e) {
+						handler.mostrarError(e.getMessage());
+					}
 				}
 			}
-
 		});
 
 		botonCancelar.addActionListener(new ActionListener() {
@@ -145,11 +155,11 @@ public class PanelAltaEmpleado extends PanelPadre {
 
 		});
 
-		this.add(rowTitulo);
-		this.add(rowNombreCompleto);
+		this.add(rowLegajo);
+		//this.add(rowTema);
 		this.add(rowSueldoHora);
+		this.add(rowNombreCompleto);
 		this.add(rowBotones);
-
 	}
 
 }

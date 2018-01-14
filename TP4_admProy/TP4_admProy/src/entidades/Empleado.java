@@ -38,7 +38,7 @@ public class Empleado {
 	public Empleado() {
 		// TODO Auto-generated constructor stub
 	}
-	public Empleado(int sueldoHora2, String text) {
+	public Empleado(int sueldoHora2, String NombreCompleto) {
 		// TODO Auto-generated constructor stub
 	}
 	public Empleado(int legajo2) {

@@ -76,16 +76,13 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 			} catch (SQLException excep) {
 				excep.printStackTrace();
 			}
-
 		}
-
 	}
 
 	@Override
 	public void updateEmpleado(Empleado e) throws MyDAOExcepcion {
 
-		String sql = "UPDATE EMPLEADO SET sueldoHora=  ? , nombreCompleto = ? where legajo= ? ";
-		
+		String sql = "UPDATE empleado SET sueldoHora=  ? , nombreCompleto = ? where legajo= ? ";
 		Connection c = DBManager.getInstance().connect();
 
 		try {
@@ -96,7 +93,6 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 			ps.setInt(3, e.getLegajo());
 
 			ps.executeUpdate();
-
 			c.commit();
 
 		} catch (SQLException excep) {
@@ -114,18 +110,14 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 				excep.printStackTrace();
 			}
 		}
-	
 
 	}
 
-	
-
-	
 	@Override
 	public List<Empleado> getAllEmpleados() throws MyDAOExcepcion {
 		List<Empleado> resultado = new ArrayList<Empleado>();
 
-		String sql = "SELECT * FROM proyecto";
+		String sql = "SELECT * FROM empleado";
 		Connection c = DBManager.getInstance().connect();
 
 		try {
@@ -134,7 +126,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
 			while (rs.next()) {
 				Empleado e = new Empleado();
-				e.setLegajo(rs.getInt("Legajo"));
+				e.setLegajo(rs.getInt("legajo"));
 				e.setSueldoHora(rs.getInt("sueldoHora"));
 				e.setNombreCompleto(rs.getString("nombreCompleto"));
 				resultado.add(e);

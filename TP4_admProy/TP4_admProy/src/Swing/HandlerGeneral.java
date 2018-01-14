@@ -17,11 +17,11 @@ import dao.ProyectoDAO;
 import entidades.Proyecto;
 import implementation.ProyectoDAOImpl;
 
-//imports de proyecto
+//imports de Empleado
 import Swing.Panel.PanelAltaEmpleado;
 import Swing.Panel.PanelBajaEmpleado;
 import Swing.Panel.PanelModificarEmpleado;
-import Swing.Panel.TablaEmpleadoPanel;
+import Swing.Panel.TablaEmpleadosPanel;
 import bo.EmpleadoBO;
 import dao.EmpleadoDAO;
 import entidades.Empleado;
@@ -140,7 +140,7 @@ public class HandlerGeneral {
 
 	public void verEmpleados() {
 		try {
-			frame.cambiarPanel(new TablaEmpleadoPanel(this, EmpleadoBO.getEmpleado()));
+			frame.cambiarPanel(new TablaEmpleadosPanel(this, EmpleadoBO.getEmpleados()));
 		} catch (MyDAOExcepcion e) {
 			mostrarError(e.getMessage());
 		}
@@ -168,7 +168,7 @@ public class HandlerGeneral {
 	}
 
 	public void mostrarEmpleados() throws MyDAOExcepcion {
-		EmpleadoBO.getEmpleado();
+		EmpleadoBO.getEmpleados();
 	}
 
 	public void editarEmpleados(Empleado p) throws MyDAOExcepcion {

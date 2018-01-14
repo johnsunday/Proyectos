@@ -46,12 +46,15 @@ public class EmpleadoBO {
 
 	
 	public void modificarEmpleado(Empleado EmpleadoToModify) throws MyDAOExcepcion {
-
-		
-
-			dao.updateEmpleado(EmpleadoToModify);
+			if (EmpleadoToModify.getSueldoHora() > 0) {
+				//AGREGAR VALIDACION DE NEGOCIO
+				dao.updateEmpleado(EmpleadoToModify);
+			}
+			else {
+				
+				throw new MyDAOExcepcion("El costo por hora del empleado debe ser mayor a 0");
+			}
 			
-			//AGREGAR VALIDACION DE NEGOCIO
 	}
 
 	public List<Empleado> getEmpleados() throws MyDAOExcepcion {
