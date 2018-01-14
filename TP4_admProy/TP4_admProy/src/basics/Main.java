@@ -32,8 +32,6 @@ public class Main {
 
 		HandlerGeneral handler = new HandlerGeneral();
 		handler.init();
-
-
 	}
 
 }
