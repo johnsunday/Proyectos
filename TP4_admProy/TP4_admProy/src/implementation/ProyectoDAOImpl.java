@@ -124,10 +124,7 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 
 	@Override
 	public void updateProyecto(Proyecto p) throws MyDAOExcepcion {
-		String sql = "UPDATE proyecto SET tema=  ? , presupuesto = ? , estado = ? where id= ? ";// + p.getTema() +"'"+", "+
-																					// "presupuesto=" +
-																					// p.getPresupuesto() + " WHERE id
-																					// ="+ p.getId();
+		String sql = "UPDATE PROYECTO SET tema = ? , presupuesto = ? , estado = ? where id=?";
 		Connection c = DBManager.getInstance().connect();
 
 		try {
@@ -137,15 +134,13 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 			ps.setInt(2, p.getPresupuesto());
 			ps.setString(3, p.getEstado());
 			ps.setInt(4, p.getId());
-
-			ps.executeUpdate();
-
+			ps.execute();
 			c.commit();
 
 		} catch (SQLException e) {
 			try {
-				c.rollback();
 				e.printStackTrace();
+				c.rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 				throw new MyDAOExcepcion("Hubo un problema en la actualizacion, por favor revise.");

@@ -159,7 +159,6 @@ public class HandlerGeneral {
 	}
 
 	public void bajaEmpleado(Empleado p)  {
-		
 		try {
 			EmpleadoBO.bajaEmpleado(p);
 		mostrarExito("Empleado borrado con exito.");

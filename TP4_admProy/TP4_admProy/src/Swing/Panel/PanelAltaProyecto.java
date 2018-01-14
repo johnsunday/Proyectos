@@ -120,7 +120,7 @@ public class PanelAltaProyecto extends PanelPadre {
 
 				else {
 
-					int presupuesto = 1;
+					int presupuesto = 0;
 
 					if (validarNumero(txtPresupuesto.getText(), "presupuesto"))
 

@@ -10,6 +10,7 @@ import javax.print.DocFlavor.CHAR_ARRAY;
 public class Proyecto {
 
 	private int id;  
+	
 	private String tema;
 	private int presupuesto;
 	private String estado;
@@ -57,6 +58,11 @@ public class Proyecto {
 	}
 	public void setPresupuesto(int presupuesto) {
 		this.presupuesto = presupuesto;
+	}
+	
+	@Override
+	public String toString() {
+		return "Proyecto [id=" + id + ", tema=" + tema + ", presupuesto=" + presupuesto + ", estado=" + estado + "]";
 	}
 	
 	

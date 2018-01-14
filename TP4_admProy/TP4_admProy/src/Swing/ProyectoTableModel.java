@@ -15,11 +15,12 @@ public class ProyectoTableModel extends AbstractTableModel{
 	
 	private List<Proyecto> proyectos;
 	
-	private String[] columNames = {"id", "tema", "presupuesto"};
+	private String[] columNames = {"ID", "Tema", "Presupuesto","Estado"};
 	
 	private static final int ID = 0;
 	private static final int TEMA = 1;
 	private static final int PRESUPUESTO = 2;
+	private static final int ESTADO = 3;
 			
 	
 	public ProyectoTableModel(List<Proyecto> proyectos) {
@@ -58,6 +59,7 @@ public class ProyectoTableModel extends AbstractTableModel{
 		case ID: return p.getId();
 		case TEMA: return p.getTema();
 		case PRESUPUESTO : return p.getPresupuesto();
+		case ESTADO: return p.getEstado();
 		}
 		return null;
 	}

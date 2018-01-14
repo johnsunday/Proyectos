@@ -122,7 +122,9 @@ public class PanelModificarProyecto extends PanelPadre {
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowEstado.add(Box.createHorizontalStrut(10));
 
+		//SETEO
 		txtTema.setText(p.getTema());
+		
 		txtPresupuesto.setText(String.valueOf(p.getPresupuesto()));
 		estadosCombo.setSelectedItem(p.getEstado());
 
@@ -131,8 +133,6 @@ public class PanelModificarProyecto extends PanelPadre {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-				handler.mostrarExito(p.getEstado());
-
 				if (validarCampo(txtTema) || validarCampo(txtPresupuesto))
 
 					handler.mostrarError("Por favor complete todos los campos.");
@@ -140,11 +140,10 @@ public class PanelModificarProyecto extends PanelPadre {
 
 					Proyecto proyectoToModify = new Proyecto(
 							txtTema.getText(),
-							Integer.parseInt(txtPresupuesto.getText()), 
-							"Terminado"
-							//estadosCombo.getSelectedItem().toString()
-
-					);
+							Integer.parseInt(txtPresupuesto.getText()),
+							estadosCombo.getSelectedItem().toString()
+							);
+					proyectoToModify.setId(p.getId());
 
 					try {
 						handler.modificarProyecto(proyectoToModify);

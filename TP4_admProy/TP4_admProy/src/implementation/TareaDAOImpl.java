@@ -28,6 +28,7 @@ public class TareaDAOImpl implements TareaDAO{
 
 			if (res == 0) {
 				throw new MyDAOExcepcion("La tarea que desea borrar no existe");
+				
 			}
 
 			c.commit();

@@ -9,9 +9,11 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -24,6 +26,7 @@ import Exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;
 import entidades.Proyecto;
+import entidades.Tarea;
 import implementation.ProyectoDAOImpl;
 import javafx.scene.paint.Color;
 
@@ -37,12 +40,16 @@ public class TablaProyectosPanel extends JPanel {
 	private JScrollPane scrollPaneParaTabla;
 	private JButton botonEditar;
 	private JButton botonEliminar;
+	private JButton botonVerTarea;
 	private JButton botonAgregar;
 	private JButton botonCancelar;
 	private JTextField nombreProyecto = new JTextField("Nombre", 6);
 	private JTextField proyectoID = new JTextField("0", 2);
 	private HandlerGeneral handler;
+	private List<Tarea> tareas;
+	private JList listaTareas;
 
+	
 	
 	/**
 	 * Asi como se armaron los paneles para el AMB, aca armamos el panel que contendra el JTABLE. 
@@ -67,9 +74,24 @@ public class TablaProyectosPanel extends JPanel {
 		scrollPaneParaTabla = new JScrollPane(tablaProyectos);
 		this.add(scrollPaneParaTabla);
 
-		botonEditar = new JButton("Editar");
+		botonEditar = new JButton("Modificar.");
+		botonVerTarea = new JButton ("Ver Tareas Asignadas");
 		botonCancelar = new JButton("Cancelar");
 		botonEliminar = new JButton("Eliminar");
+		
+
+		DefaultListModel modeloLista = new DefaultListModel();
+		listaTareas = new JList(modeloLista);
+	    
+		JScrollPane scrollPaneParaLista = new JScrollPane(listaTareas);
+		
+		
+		this.add(scrollPaneParaLista);
+	    
+		
+	    
+	    
+	    
 		
 		
 		JPanel rowBotones = new JPanel();
@@ -84,10 +106,14 @@ public class TablaProyectosPanel extends JPanel {
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowBotones.add(botonCancelar);
 		
+		rowBotones.add(Box.createHorizontalStrut(10));
+		rowBotones.add(botonVerTarea);
+		
+		
 		botonEditar.setEnabled(false);
 		botonEliminar.setEnabled(false);
-
-
+		botonVerTarea.setEnabled(false);
+		
 
 		botonCancelar.addActionListener(new ActionListener() {
 
@@ -110,6 +136,7 @@ public class TablaProyectosPanel extends JPanel {
 		            boolean selected = tablaProyectos.getSelectedRowCount() > 0;
 		            botonEditar.setEnabled(selected);
 		            botonEliminar.setEnabled(selected);
+		            botonVerTarea.setEnabled(selected);
 		   
 		    }
 		});
@@ -150,14 +177,14 @@ public class TablaProyectosPanel extends JPanel {
 				
 				Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());
 				int seleccion = JOptionPane.showOptionDialog( null,"¿Desea eliminar el Proyecto ID: " 
-				+ p.getId() + ", Tema: " + p.getTema() + ", Presupuesto: " + p.getPresupuesto()+" ?"  ,
+				+ p.getId() + ", Tema: " + p.getTema() + ", Presupuesto: " + p.getPresupuesto() +  ", Estado: " + p.getEstado() + " ?"  ,
 						  "Confirma Eliminacion:",JOptionPane.YES_NO_OPTION,
 						   JOptionPane.QUESTION_MESSAGE,null,// null para icono por defecto.
 						  new Object[] { "Si", "No"},null);
 						      
 						 if (seleccion == 0){
 								handler.bajaProyecto(p);
-								handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
+								//handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
 								handler.verProyectos();
 						 }
 				
