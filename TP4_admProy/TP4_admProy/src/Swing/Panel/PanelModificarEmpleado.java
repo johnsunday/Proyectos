@@ -58,8 +58,8 @@ public class PanelModificarEmpleado extends PanelPadre {
 		
 		lblTema = new JLabel("Modificacion de Empleados");
 		lblLegajo = new JLabel("Legajo :");
-		lblNombreCompleto = new JLabel("NombreCompleto:");
-		lblSueldoHora = new JLabel("SueldoHora: ");
+		lblNombreCompleto = new JLabel("Nombre Completo:");
+		lblSueldoHora = new JLabel("Sueldo por Hora: ");
 		
 		txtLegajo = new JTextField("");
 		txtNombreCompleto = new JTextField("");

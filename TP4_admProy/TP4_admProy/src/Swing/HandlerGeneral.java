@@ -15,15 +15,18 @@ import Swing.Panel.TablaProyectosPanel;
 import bo.ProyectoBO;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
+import entidades.Tarea;
 import implementation.ProyectoDAOImpl;
-
+import implementation.TareaDAOImpl;
 //imports de Empleado
 import Swing.Panel.PanelAltaEmpleado;
 import Swing.Panel.PanelBajaEmpleado;
 import Swing.Panel.PanelModificarEmpleado;
 import Swing.Panel.TablaEmpleadosPanel;
 import bo.EmpleadoBO;
+import bo.TareaBO;
 import dao.EmpleadoDAO;
+import dao.TareaDAO;
 import entidades.Empleado;
 import implementation.EmpleadoDAOImpl;
 
@@ -36,6 +39,10 @@ public class HandlerGeneral {
 
 	// EMPLEADO VARS.
 	private EmpleadoBO EmpleadoBO;
+	
+	// TAREA VARS.
+	
+	private TareaBO tareaBO;
 
 	
 	private MiFrame frame;
@@ -50,6 +57,11 @@ public class HandlerGeneral {
 		proyectoBO.setDAO(new ProyectoDAOImpl());
 		EmpleadoBO = new EmpleadoBO();
 		EmpleadoBO.setDAO(new EmpleadoDAOImpl());
+		
+		tareaBO = new TareaBO();
+		
+		tareaBO.setDAO(new TareaDAOImpl());
+		
 
 	}
 
@@ -105,7 +117,17 @@ public class HandlerGeneral {
 	public void modificarProyecto(Proyecto p) throws MyDAOExcepcion {
 		proyectoBO.modificarProyecto(p);
 	}
-
+	
+	public List<Tarea> getTareasByIdProyecto ( Proyecto p) throws MyDAOExcepcion
+	{
+		
+		List<Tarea> tareas = tareaBO.getTareasByIdProyecto(p);
+		return tareas;
+		
+		
+		
+	}
+	
 	public void mostrarError(String m) {
 		JOptionPane.showMessageDialog(null, m, "Error", JOptionPane.ERROR_MESSAGE);
 

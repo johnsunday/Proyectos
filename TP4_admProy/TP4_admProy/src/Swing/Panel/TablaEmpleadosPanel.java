@@ -40,9 +40,9 @@ public class TablaEmpleadosPanel extends JPanel {
 	private JButton botonAgregar;
 	private JButton botonCancelar;
 	
-	private JTextField legajo = new JTextField("Legajo", 6);
-	private JTextField nombreCompleto = new JTextField("Nombre completo", 2);
-	private JTextField sueldoHora = new JTextField("Sueldo por hora", 3);
+	private JTextField legajo = new JTextField("legjao", 6);
+	private JTextField nombreCompleto = new JTextField("nombreCompleto", 2);
+	private JTextField sueldoHora = new JTextField("sueldoPorHora", 3);
 	
 	private HandlerGeneral handler;
 

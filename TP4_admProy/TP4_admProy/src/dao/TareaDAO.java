@@ -8,6 +8,7 @@ import java.util.Collection;
 
 import entidades.Tarea;
 import entidades.Empleado;
+import entidades.Proyecto;
 
 /**
  * Definimos la interface DAO, desde aca hacemos la implementacion para establecer con lenguaje SQL 
@@ -22,5 +23,6 @@ public interface TareaDAO {
 	public List<Tarea> getAllTareas() throws MyDAOExcepcion;	
 	public Tarea getTareaByid (Tarea t) throws MyDAOExcepcion;
 	public List<Tarea> getTareaByEmpleadoId(Empleado e) throws MyDAOExcepcion;
+	public List<Tarea> getTareaByProyectoId(Proyecto p) throws MyDAOExcepcion;
 }
 

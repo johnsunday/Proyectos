@@ -47,8 +47,13 @@ public class Tarea {
 	}
 
 
-	public Tarea() {
-		// TODO Auto-generated constructor stub
+	public Tarea(String descripcion, int asignadoHoras, int proyectoid, int empleadoid) {
+
+		this.descripcion = descripcion;
+		this.horas=asignadoHoras;
+		this.proyectoid=proyectoid;
+		this.empleadoid=empleadoid;
+		
 	}
 
 	public int getId() {

@@ -124,6 +124,7 @@ public class PanelAltaProyecto extends PanelPadre {
 
 					if (validarNumero(txtPresupuesto.getText(), "presupuesto"))
 
+						
 						presupuesto = Integer.parseInt(txtPresupuesto.getText());
 
 					Proyecto p = new Proyecto(txtTema.getText(), presupuesto,"Iniciado");

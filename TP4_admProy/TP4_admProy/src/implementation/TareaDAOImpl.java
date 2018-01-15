@@ -169,6 +169,7 @@ public class TareaDAOImpl implements TareaDAO{
 		Connection c = DBManager.getInstance().connect();
 		try {
 			Tarea tarea = new Tarea();
+			
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()){
@@ -194,7 +195,7 @@ public class TareaDAOImpl implements TareaDAO{
 	
 	public List<Tarea> getTareaByEmpleadoId(Empleado emp) throws MyDAOExcepcion {
 		List<Tarea> resultado = new ArrayList<Tarea>();
-		String sql = "Select * FROM tarea WHERE empleado= ? ";// + p.getId()+ "'";
+		String sql = "Select * FROM tarea WHERE empleado=" +  emp.getLegajo();
 		Connection c = DBManager.getInstance().connect();
 		try {
 			Tarea t = new Tarea();
@@ -218,5 +219,37 @@ public class TareaDAOImpl implements TareaDAO{
 				catch(SQLException e1){}}
 		return resultado;
 	}
+	
+	public List<Tarea> getTareaByProyectoId(Proyecto p) throws MyDAOExcepcion {
+		List<Tarea> resultado = new ArrayList<Tarea>();
+		String sql = "Select * FROM tarea WHERE proyecto="+  p.getId();
+		Connection c = DBManager.getInstance().connect();
+		try {
+			Tarea t = new Tarea();
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			while(rs.next()){
+				
+				t.setId(rs.getInt("id"));
+				t.setDescripcion(rs.getString("descripcion"));
+				t.setHoras(rs.getInt("hora"));
+				t.setEstado(rs.getString("estado"));
+				t.setProyectoid(rs.getInt("proyecto"));
+				t.setEmpleadoid(rs.getInt("empleado"));
+				
+				resultado.add(t);
+			}				
+		} catch (SQLException e) {
+				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+			}finally {
+				try {c.close();}
+				catch(SQLException e1){}}
+		return resultado;
+	}
+	
+	
+	
+	
+	
 
 }

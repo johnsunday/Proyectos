@@ -15,7 +15,7 @@ public class EmpleadoTableModel extends AbstractTableModel{
 	
 	private List<Empleado> Empleados;
 	
-	private String[] columNames = {"legajo", "sueldoHora", "nombreCompleto"};
+	private String[] columNames = {"Legajo", "Sueldo Por Hora", "Nombre Completo"};
 	
 	private static final int LEGAJO= 0;
 	private static final int SUELDOHORA = 1;

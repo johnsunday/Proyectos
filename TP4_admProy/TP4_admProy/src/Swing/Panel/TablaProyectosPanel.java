@@ -47,7 +47,7 @@ public class TablaProyectosPanel extends JPanel {
 	private JTextField proyectoID = new JTextField("0", 2);
 	private HandlerGeneral handler;
 	private List<Tarea> tareas;
-	private JList listaTareas;
+	private JList<Tarea> listaTareas;
 
 	
 	
@@ -88,7 +88,6 @@ public class TablaProyectosPanel extends JPanel {
 		
 		this.add(scrollPaneParaLista);
 	    
-		
 	    
 	    
 	    
@@ -137,6 +136,30 @@ public class TablaProyectosPanel extends JPanel {
 		            botonEditar.setEnabled(selected);
 		            botonEliminar.setEnabled(selected);
 		            botonVerTarea.setEnabled(selected);
+		            
+		            Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());
+		            
+		            try {
+		            	List<Tarea> tareas = handler.getTareasByIdProyecto(p);
+		            	
+		            	DefaultListModel<Tarea> tareasmodel = new DefaultListModel<Tarea>();
+		            	
+		            	for (int i=0 ; i< tareas.size() ; i++)
+		            		
+		            	{
+		            	
+		            	tareasmodel.addElement(tareas.get(i));
+		            	}
+		            	
+		            	
+		            	listaTareas.setModel(tareasmodel);
+		            	
+		            
+		            	
+					} catch (MyDAOExcepcion e1) {
+						
+						
+					}
 		   
 		    }
 		});
@@ -153,7 +176,7 @@ public class TablaProyectosPanel extends JPanel {
 				try {
 					handler.editarProyectos(p);
 				} catch (MyDAOExcepcion e) {
-					// TODO Auto-generated catch block
+					// TODO Agregar Algo
 				}
 				
 

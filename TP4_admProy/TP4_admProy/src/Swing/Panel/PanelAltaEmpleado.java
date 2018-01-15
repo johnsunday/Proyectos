@@ -73,13 +73,8 @@ public class PanelAltaEmpleado extends PanelPadre {
 		JPanel rowBotones = new JPanel();
 
 		rowTitulo.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		
 		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
-		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
-		
 		rowSueldoHora.setLayout(new BoxLayout(rowSueldoHora, BoxLayout.X_AXIS));
-		rowSueldoHora.setLayout(new BoxLayout(rowSueldoHora, BoxLayout.X_AXIS));
-		
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
 
 		rowTitulo.add(Box.createHorizontalStrut(10));
