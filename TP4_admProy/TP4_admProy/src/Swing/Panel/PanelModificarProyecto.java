@@ -44,7 +44,7 @@ public class PanelModificarProyecto extends PanelPadre {
 	private String[] estadosProyecto = new String[]
 			{ "Iniciado.", "En proceso.", "Cancelado.", "Finalizado." };
 	
-	JComboBox<String> estadosCombo = new JComboBox<>(estadosProyecto);
+	private JComboBox<String> estadosCombo = new JComboBox<>(estadosProyecto);
 
 	private HandlerGeneral handler;
 

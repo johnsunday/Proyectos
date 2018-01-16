@@ -64,4 +64,9 @@ public class ProyectoBO {
 		this.dao = proyectoDAO;
 	}
 
+	public List<Proyecto> getAllProyectoByEstado(String estado) throws MyDAOExcepcion {
+	return dao.getAllProyectosByEstado(estado);	
+	
+	}
+
 }

@@ -90,8 +90,6 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 		return resultado;
 	}
 
-	
-
 	public void insertProyecto(Proyecto p) throws MyDAOExcepcion {
 		String sql = "INSERT INTO proyecto (tema, presupuesto, estado) VALUES (?, ?, ?)";
 		Connection c = DBManager.getInstance().connect();
@@ -154,28 +152,67 @@ public class ProyectoDAOImpl implements ProyectoDAO {
 		}
 	}
 
-	public Proyecto getProyectoById(Proyecto p) throws MyDAOExcepcion{
+	public Proyecto getProyectoById(Proyecto p) throws MyDAOExcepcion {
 		String sql = "SELECT * FROM PROYECTO where id = " + p.getId();
 		Connection c = DBManager.getInstance().connect();
 		try {
 			Proyecto proyecto = new Proyecto();
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
-			while(rs.next()){
-				
+			while (rs.next()) {
+
 				proyecto.setId(rs.getInt("id"));
 				proyecto.setTema(rs.getString("tema"));
 				proyecto.setEstado(rs.getString("estado"));
-				
-				
+
 				return proyecto;
-			}				
+			}
 		} catch (SQLException e) {
-				throw new MyDAOExcepcion("Hubo un error en la busqueda");
-			}finally {
-				try {c.close();}
-				catch(SQLException e1){}}
+			throw new MyDAOExcepcion("Hubo un error en la busqueda");
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException e1) {
+			}
+		}
 		return null;
+	}
+
+	public List<Proyecto> getAllProyectosByEstado(String estado) throws MyDAOExcepcion {
+		List<Proyecto> resultado = new ArrayList<Proyecto>();
+
+		String sql = "SELECT * FROM proyecto where estado = '" + estado + "'";
+		Connection c = DBManager.getInstance().connect();
+
+		try {
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+
+			while (rs.next()) {
+				Proyecto p = new Proyecto();
+				p.setId(rs.getInt("id"));
+				p.setTema(rs.getString("Tema"));
+				p.setPresupuesto(rs.getInt("Presupuesto"));
+				p.setEstado(rs.getString("Estado"));
+				resultado.add(p);
+			}
+
+		} catch (SQLException e) {
+			try {
+				e.printStackTrace();
+				c.rollback();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			throw new MyDAOExcepcion("Hubo un problema en la busqueda, por favor revise.");
+		} finally {
+			try {
+				c.close();
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+		}
+		return resultado;
 	}
 
 }

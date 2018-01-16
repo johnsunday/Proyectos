@@ -9,7 +9,9 @@ import Swing.Frame.MiFrame;
 
 //imports de proyecto 
 import Swing.Panel.PanelAltaProyecto;
+import Swing.Panel.PanelAltaTarea;
 import Swing.Panel.PanelBajaProyecto;
+import Swing.Panel.PanelBajaTarea;
 import Swing.Panel.PanelModificarProyecto;
 import Swing.Panel.TablaProyectosPanel;
 import bo.ProyectoBO;
@@ -57,9 +59,7 @@ public class HandlerGeneral {
 		proyectoBO.setDAO(new ProyectoDAOImpl());
 		EmpleadoBO = new EmpleadoBO();
 		EmpleadoBO.setDAO(new EmpleadoDAOImpl());
-		
 		tareaBO = new TareaBO();
-		
 		tareaBO.setDAO(new TareaDAOImpl());
 		
 
@@ -127,6 +127,18 @@ public class HandlerGeneral {
 		
 		
 	}
+	
+	
+	
+	public List<Proyecto> getAllProyectoByEstado ( String estado) throws MyDAOExcepcion
+	{
+		
+		List<Proyecto> proyectos = proyectoBO.getAllProyectoByEstado(estado);
+		return proyectos;
+		
+		
+	}
+	
 	
 	public void mostrarError(String m) {
 		JOptionPane.showMessageDialog(null, m, "Error", JOptionPane.ERROR_MESSAGE);
@@ -203,7 +215,42 @@ public class HandlerGeneral {
 		EmpleadoBO.modificarEmpleado(p);
 	}
 
+	public void altaTarea(Tarea t) {
+		
+		try {
+			tareaBO.altaTarea(t);
+			mostrarExito("Tarea generada con exito");
+		} catch (MyDAOExcepcion e) {
+			
+			mostrarError(e.getMessage());
+		}
+		
+	}
 
+	public void mostrarAltaTarea() {
+		frame.cambiarPanel(new PanelAltaTarea(this));
+	}
+
+	public void mostrarBajaTarea() {
+		frame.cambiarPanel(new PanelBajaTarea(this));		
+	}
+
+	public void verTareas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<Empleado> getAllEmpleados() throws MyDAOExcepcion {
+			return EmpleadoBO.getEmpleados();
+		
+
+	}
+
+	public void bajaTarea(Tarea t) throws MyDAOExcepcion  {
+		
+		tareaBO.altaTarea(t);
+		
+	}
 
 
 }

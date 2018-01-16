@@ -66,11 +66,17 @@ public class MiFrame extends JFrame {
 		JMenuItem miBajaEmpleado;
 		JMenuItem miModificacionEmpleado;
 
+		JMenuItem miAltaTarea;
+		JMenuItem miBajaTarea;
+		JMenuItem miModificacionTarea;
+
+		
 		JMenuItem miAltaReportes;
 		JMenuItem miBajaReportes;
 		JMenuItem miModificacionReportes;
 		JMenu mproyecto;
 		JMenu mEmpleado;
+		JMenu mtarea;
 		JMenu mreportes;
 
 		mb = new JMenuBar();
@@ -83,6 +89,13 @@ public class MiFrame extends JFrame {
 		miBajaEmpleado = new JMenuItem("Baja");
 		miModificacionEmpleado = new JMenuItem("Modificacion");
 
+		
+
+		miAltaTarea = new JMenuItem("Alta");
+		miBajaTarea = new JMenuItem("Baja");
+		miModificacionTarea = new JMenuItem("Modificacion");
+		
+		
 		miAltaReportes = new JMenuItem("Alta");
 		miBajaReportes = new JMenuItem("Baja");
 		miModificacionReportes = new JMenuItem("Modificacion");
@@ -102,6 +115,17 @@ public class MiFrame extends JFrame {
 		mproyecto.add(miBajaProyecto);
 		mproyecto.add(miModificacionProyecto);
 
+		
+		// MENU DE Tarea//
+		mtarea = new JMenu();
+		mtarea.setText("Tarea");
+		mtarea.add(miAltaTarea);
+		mtarea.add(miBajaTarea);
+		mtarea.add(miModificacionTarea);
+
+
+		
+		
 		// MENU DE REPORTES //
 		mreportes = new JMenu();
 		mreportes.setText("Reportes");
@@ -111,8 +135,9 @@ public class MiFrame extends JFrame {
 
 		mb.add(mEmpleado);
 		mb.add(mproyecto);
+		mb.add(mtarea);
 		mb.add(mreportes);
-
+		
 		this.setJMenuBar(mb);
 
 		miAltaProyecto.addActionListener(new ActionListener() {
@@ -176,6 +201,39 @@ public class MiFrame extends JFrame {
 	});
 
 		
+		// PANEL DE TAREAS //
+		miAltaTarea.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				handler.mostrarAltaTarea();
+			}
+
+		});
+
+		miBajaTarea.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				handler.mostrarBajaTarea();
+			}
+
+		});
+		
+		miModificacionTarea.addActionListener(new ActionListener() {
+	
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			handler.verTareas();
+		}
+
+	});
+
+
+		
+	
 	}
 	
 	/**

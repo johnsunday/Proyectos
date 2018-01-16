@@ -56,6 +56,15 @@ public class Tarea {
 		
 	}
 
+	public Tarea() {
+		// CONSTRUCTOR VACIO
+	
+	}
+
+	public Tarea(int id) {
+		this.id=id;
+	}
+
 	public int getId() {
 		return id;
 	}

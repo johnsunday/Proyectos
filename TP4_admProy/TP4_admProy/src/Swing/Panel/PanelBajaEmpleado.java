@@ -39,7 +39,6 @@ public class PanelBajaEmpleado extends PanelPadre {
 	private JTextField txtLegajo;
 	private JTextField txtNombreCompleto;
 	private JTextField txtSueldoHora;
-
 	private HandlerGeneral handler;
 
 	public PanelBajaEmpleado(HandlerGeneral handler) {

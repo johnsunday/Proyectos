@@ -75,7 +75,6 @@ public class TablaProyectosPanel extends JPanel {
 		this.add(scrollPaneParaTabla);
 
 		botonEditar = new JButton("Modificar.");
-		botonVerTarea = new JButton ("Ver Tareas Asignadas");
 		botonCancelar = new JButton("Cancelar");
 		botonEliminar = new JButton("Eliminar");
 		
@@ -106,12 +105,10 @@ public class TablaProyectosPanel extends JPanel {
 		rowBotones.add(botonCancelar);
 		
 		rowBotones.add(Box.createHorizontalStrut(10));
-		rowBotones.add(botonVerTarea);
 		
 		
 		botonEditar.setEnabled(false);
 		botonEliminar.setEnabled(false);
-		botonVerTarea.setEnabled(false);
 		
 
 		botonCancelar.addActionListener(new ActionListener() {
@@ -135,7 +132,6 @@ public class TablaProyectosPanel extends JPanel {
 		            boolean selected = tablaProyectos.getSelectedRowCount() > 0;
 		            botonEditar.setEnabled(selected);
 		            botonEliminar.setEnabled(selected);
-		            botonVerTarea.setEnabled(selected);
 		            
 		            Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());
 		            

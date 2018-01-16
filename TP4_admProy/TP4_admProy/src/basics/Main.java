@@ -29,6 +29,7 @@ public class Main {
 
 		TableManager tmempleado= new TableManager();
 		tmempleado.createEmpleadoTable();
+		
 
 		HandlerGeneral handler = new HandlerGeneral();
 		handler.init();

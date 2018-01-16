@@ -5,16 +5,20 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import Exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import entidades.Empleado;
+import entidades.Proyecto;
 import entidades.Tarea;
 
 public class PanelAltaTarea extends PanelPadre {
@@ -32,6 +36,8 @@ public class PanelAltaTarea extends PanelPadre {
 	private JTextField txtAsignadoHoras;
 	private JTextField txtProyectoAsig;
 	private JTextField txtEmpleadoAsig;
+	private JComboBox<String> proyectosCombo = new JComboBox<>();
+	private JComboBox<String> empleadosCombo = new JComboBox<>();
 
 	private HandlerGeneral handler;
 
@@ -49,39 +55,78 @@ public class PanelAltaTarea extends PanelPadre {
 		lblDescripcion = new JLabel("Descripcion");
 		lblAsignadoHoras = new JLabel("Horas Asignadas");
 		lblProyectoAsig = new JLabel("Proyecto Asignado");
-		lblEmpleadoAsig = new JLabel ("Empleado Asignado");
-		
-		txtDescripcion = new JTextField ("");
-		txtAsignadoHoras = new JTextField ("");
-		txtProyectoAsig = new JTextField ("");
-		txtEmpleadoAsig = new JTextField ("");
-		
-		
+		lblEmpleadoAsig = new JLabel("Empleado Asignado");
+
+		txtDescripcion = new JTextField("");
+		txtAsignadoHoras = new JTextField("");
+		// txtProyectoAsig = new JTextField ("");
+		// txtEmpleadoAsig = new JTextField ("");
+
 		txtDescripcion.setMaximumSize(new Dimension(450, 30));
 		txtAsignadoHoras.setMaximumSize(new Dimension(450, 30));
-		txtProyectoAsig.setMaximumSize(new Dimension(450, 30));
-		txtEmpleadoAsig.setMaximumSize(new Dimension(450, 30));
+		// txtProyectoAsig.setMaximumSize(new Dimension(450, 30));
+		// txtEmpleadoAsig.setMaximumSize(new Dimension(450, 30));
 
-		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		
 		JPanel rowTitulo = new JPanel();
 		JPanel rowDescripcion = new JPanel();
-		JPanel rowAsignadoHoras =  new JPanel();
+		JPanel rowAsignadoHoras = new JPanel();
 		JPanel rowProyectoAsig = new JPanel();
 		JPanel rowEmpleadoAsig = new JPanel();
 		JPanel rowBotones = new JPanel();
 
+		try {
+
+			List<Proyecto> proyectosExistentes = handler.getAllProyectoByEstado("Iniciado.");
+		
+				for (int i=0 ; i<proyectosExistentes.size() ; i++ )
+					
+				{
+					proyectosCombo.addItem(new String (proyectosExistentes.get(i).getTema()));
+					
+				}
+
+		
+		} catch (MyDAOExcepcion e)
+
+		{
+			handler.mostrarError(e.getMessage());
+
+		}
+
+
+		try {
+
+			List<Empleado> empleadosExistentes = handler.getAllEmpleados();
+		
+				for (int i=0 ; i<empleadosExistentes.size() ; i++ )
+					
+				{
+					empleadosCombo.addItem
+					(new String (empleadosExistentes.get(i).getNombreCompleto()));
+					
+					
+				}
+
+		
+		} catch (MyDAOExcepcion e)
+
+		{
+			handler.mostrarError(e.getMessage());
+
+		}
+
+		
 		
 		
 		rowTitulo.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		rowDescripcion.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		rowAsignadoHoras.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		rowProyectoAsig.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		rowEmpleadoAsig.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		rowBotones.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		
+		rowDescripcion.setLayout(new BoxLayout(rowDescripcion, BoxLayout.X_AXIS));
+		rowAsignadoHoras.setLayout(new BoxLayout(rowAsignadoHoras, BoxLayout.X_AXIS));
+		rowProyectoAsig.setLayout(new BoxLayout(rowProyectoAsig, BoxLayout.X_AXIS));
+		rowEmpleadoAsig.setLayout(new BoxLayout(rowEmpleadoAsig, BoxLayout.X_AXIS));
+		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
+
 		lblTitulo.setFont((new Font("Arial", Font.BOLD, 17)));
 		lblTitulo.setForeground(Color.LIGHT_GRAY);
 
@@ -97,39 +142,36 @@ public class PanelAltaTarea extends PanelPadre {
 		rowProyectoAsig.add(Box.createHorizontalStrut(10));
 		rowEmpleadoAsig.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
-		
+
 		rowDescripcion.add(txtDescripcion);
 		rowAsignadoHoras.add(txtAsignadoHoras);
-		rowProyectoAsig.add(txtProyectoAsig);
-		rowEmpleadoAsig.add(txtEmpleadoAsig);
+		rowProyectoAsig.add(proyectosCombo);
+		rowEmpleadoAsig.add(empleadosCombo);
 		rowBotones.add(botonCancelar);
-		
-		
+
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				if (validarCampo(txtDescripcion) || validarCampo(txtAsignadoHoras) || validarCampo(txtProyectoAsig) || validarCampo(txtEmpleadoAsig))
+				if (validarCampo(txtDescripcion) || validarCampo(txtAsignadoHoras) || validarCampo(txtProyectoAsig)
+						|| validarCampo(txtEmpleadoAsig))
 
 					handler.mostrarError("Por favor complete todos los campos.");
 
 				else {
-					int asignadoHoras =1;
-					
+					int asignadoHoras = 1;
+
 					if (validarNumero(txtAsignadoHoras.getText(), "asignadoHoras"))
-					asignadoHoras = Integer.parseInt(txtAsignadoHoras.getText());
-					
-					
-					Tarea t = new Tarea(txtDescripcion.getText(),asignadoHoras,1,1);
+						asignadoHoras = Integer.parseInt(txtAsignadoHoras.getText());
+
+					Tarea t = new Tarea(txtDescripcion.getText(), asignadoHoras, 1, 1);
 					handler.altaTarea(t);
 				}
 			}
 
 		});
-		
-		
-		
+
 		botonCancelar.addActionListener(new ActionListener() {
 
 			@Override
@@ -140,16 +182,13 @@ public class PanelAltaTarea extends PanelPadre {
 			}
 
 		});
-		
-		
+
 		this.add(rowTitulo);
 		this.add(rowDescripcion);
 		this.add(rowAsignadoHoras);
 		this.add(rowProyectoAsig);
 		this.add(rowEmpleadoAsig);
 		this.add(rowBotones);
-		
-		
 
 	}
 
