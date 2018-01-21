@@ -14,6 +14,7 @@ import Swing.Panel.PanelBajaProyecto;
 import Swing.Panel.PanelBajaTarea;
 import Swing.Panel.PanelModificarProyecto;
 import Swing.Panel.TablaProyectosPanel;
+import Swing.Panel.TablaTareasPanel;
 import bo.ProyectoBO;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
@@ -235,10 +236,6 @@ public class HandlerGeneral {
 		frame.cambiarPanel(new PanelBajaTarea(this));		
 	}
 
-	public void verTareas() {
-		// TODO Auto-generated method stub
-		
-	}
 
 	public List<Empleado> getAllEmpleados() throws MyDAOExcepcion {
 			return EmpleadoBO.getEmpleados();
@@ -252,5 +249,23 @@ public class HandlerGeneral {
 		
 	}
 
+	public void editarTarea(Tarea t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public List<Tarea> getTareabyId(Tarea t) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public void verTareas() {
+		try {
+			frame.cambiarPanel(new TablaTareasPanel(this, tareaBO.getTareas()));
+		} catch (MyDAOExcepcion e) {
+			mostrarError(e.getMessage());
+		}
+	}
+	
 
 }

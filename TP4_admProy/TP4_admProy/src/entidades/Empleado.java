@@ -35,14 +35,18 @@ public class Empleado {
 		this.sueldoHora = sueldoHora;
 		this.nombreCompleto = nombreCompleto;
 	}
+	public Empleado(int sueldoHora, String nombreCompleto) {
+		
+		this.sueldoHora = sueldoHora;
+		this.nombreCompleto = nombreCompleto;
+	}
 	public Empleado() {
-		// TODO Auto-generated constructor stub
+	
 	}
-	public Empleado(int sueldoHora2, String NombreCompleto) {
-		// TODO Auto-generated constructor stub
+	public Empleado(int legajo) {
+		this.legajo=legajo;
 	}
-	public Empleado(int legajo2) {
-		// TODO Auto-generated constructor stub
-	}
+
+	
 	}
 
