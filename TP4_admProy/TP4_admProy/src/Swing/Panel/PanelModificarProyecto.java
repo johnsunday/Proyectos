@@ -42,10 +42,11 @@ public class PanelModificarProyecto extends PanelPadre {
 	private JTextField txtTema;
 	private JTextField txtPresupuesto;
 	private String[] estadosProyecto = new String[]
-			{ "Iniciado.", "En proceso.", "Cancelado.", "Finalizado." };
+			{ "Iniciado", "En proceso", "Cancelado", "Finalizado" };
 	
 	private JComboBox<String> estadosCombo = new JComboBox<>(estadosProyecto);
 
+	
 	private HandlerGeneral handler;
 
 	public PanelModificarProyecto(HandlerGeneral handler, Proyecto p) {
@@ -56,6 +57,7 @@ public class PanelModificarProyecto extends PanelPadre {
 
 	private void initUI() {
 
+		
 		botonAceptar = new JButton("Aceptar");
 		botonCancelar = new JButton("Cancelar");
 		lblTitulo = new JLabel("Modificacion de Proyectos");

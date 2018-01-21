@@ -11,7 +11,7 @@ public class TareaTableModel  extends AbstractTableModel{
 	
 private List<Tarea> tareas;
 	
-	private String[] columNames = {"ID", "Descripción", "Horas Asig.","Estado", "Proyecto Asig.", "Empleado Asig."};
+	private String[] columNames = {"ID", "Desc", "Hrs Asig.","Estado", "ID.Proyecto", "Leg.Empleado"};
 	
 	private static final int ID = 0;
 	private static final int Descripción = 1;
@@ -47,6 +47,7 @@ private List<Tarea> tareas;
 		case Estado: return t.getEstado();
 		case ProyectoAsig: return t.getProyectoid();
 		case EmpleadoAsig: return t.getEmpleadoid();
+		
 		}
 		return null;
 	}

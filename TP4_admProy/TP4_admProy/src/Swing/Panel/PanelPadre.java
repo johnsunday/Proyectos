@@ -19,10 +19,11 @@ public abstract class PanelPadre extends JPanel {
 			Integer.parseInt(numbers);
 			isNumber= true;
 		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo.toUpperCase(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return isNumber;
 	}
+	
 	
 	
 	public boolean validarFloat(String numbers, String campo) {
@@ -31,7 +32,7 @@ public abstract class PanelPadre extends JPanel {
 			Float.parseFloat(numbers);
 			isFloat= true;
 		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo.toUpperCase(), "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo, "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return isFloat;
 	}

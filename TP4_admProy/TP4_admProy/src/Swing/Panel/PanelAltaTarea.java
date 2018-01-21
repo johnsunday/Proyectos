@@ -36,8 +36,9 @@ public class PanelAltaTarea extends PanelPadre {
 	private JTextField txtAsignadoHoras;
 	private JTextField txtProyectoAsig;
 	private JTextField txtEmpleadoAsig;
-	private JComboBox<String> proyectosCombo = new JComboBox<>();
-	private JComboBox<String> empleadosCombo = new JComboBox<>();
+	private JComboBox<Integer> proyectosCombo = new JComboBox<>();
+	private JComboBox<Integer> empleadosCombo = new JComboBox<>();
+	
 
 	private HandlerGeneral handler;
 
@@ -54,8 +55,8 @@ public class PanelAltaTarea extends PanelPadre {
 
 		lblDescripcion = new JLabel("Descripcion");
 		lblAsignadoHoras = new JLabel("Horas Asignadas");
-		lblProyectoAsig = new JLabel("Proyecto Asignado");
-		lblEmpleadoAsig = new JLabel("Empleado Asignado");
+		lblProyectoAsig = new JLabel("ID Proyecto Asig.");
+		lblEmpleadoAsig = new JLabel("Legajo Proyecto Asig.");
 
 		txtDescripcion = new JTextField("");
 		txtAsignadoHoras = new JTextField("");
@@ -79,37 +80,33 @@ public class PanelAltaTarea extends PanelPadre {
 		try {
 
 			List<Proyecto> proyectosExistentes = handler.getAllProyectoByEstado("Iniciado.");
-		
-				for (int i=0 ; i<proyectosExistentes.size() ; i++ )
-					
-				{
-					proyectosCombo.addItem(new String (proyectosExistentes.get(i).getTema()));
-					
-				}
 
-		
+			for (int i = 0; i < proyectosExistentes.size(); i++)
+
+			{
+				proyectosCombo.addItem(new Integer(proyectosExistentes.get(i).getId()));
+
+			}
+
 		} catch (MyDAOExcepcion e)
+		
 
 		{
 			handler.mostrarError(e.getMessage());
 
 		}
-
 
 		try {
 
 			List<Empleado> empleadosExistentes = handler.getAllEmpleados();
-		
-				for (int i=0 ; i<empleadosExistentes.size() ; i++ )
-					
-				{
-					empleadosCombo.addItem
-					(new String (empleadosExistentes.get(i).getNombreCompleto()));
-					
-					
-				}
 
-		
+			for (int i = 0; i < empleadosExistentes.size(); i++)
+
+			{
+				empleadosCombo.addItem(new Integer(empleadosExistentes.get(i).getLegajo()));
+
+			}
+
 		} catch (MyDAOExcepcion e)
 
 		{
@@ -117,9 +114,6 @@ public class PanelAltaTarea extends PanelPadre {
 
 		}
 
-		
-		
-		
 		rowTitulo.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
 		rowDescripcion.setLayout(new BoxLayout(rowDescripcion, BoxLayout.X_AXIS));
 		rowAsignadoHoras.setLayout(new BoxLayout(rowAsignadoHoras, BoxLayout.X_AXIS));
@@ -154,23 +148,38 @@ public class PanelAltaTarea extends PanelPadre {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				if (validarCampo(txtDescripcion) || validarCampo(txtAsignadoHoras) || validarCampo(txtProyectoAsig)
-						|| validarCampo(txtEmpleadoAsig))
+				if (validarCampo(txtDescripcion) || validarCampo(txtAsignadoHoras) )
 
 					handler.mostrarError("Por favor complete todos los campos.");
 
 				else {
-					int asignadoHoras = 1;
+					int asignadoHoras= 1;
 
-					if (validarNumero(txtAsignadoHoras.getText(), "asignadoHoras"))
+					if (validarNumero(txtAsignadoHoras.getText(), "Horas Asignadas")) {
+					
 						asignadoHoras = Integer.parseInt(txtAsignadoHoras.getText());
-
-					Tarea t = new Tarea(txtDescripcion.getText(), asignadoHoras, 1, 1);
-					handler.altaTarea(t);
+					
+									
+					
+					Tarea t = new Tarea(txtDescripcion.getText(), asignadoHoras,"Iniciado"
+							,Integer.parseInt(proyectosCombo.getSelectedItem().toString())
+							,Integer.parseInt(empleadosCombo.getSelectedItem().toString())
+							);
+					
+					
+					try {
+						handler.altaTarea(t);
+						handler.mostrarExito("Tarea " + t.getDescripcion() + " dada del Alta Exitosamente");
+					} catch (MyDAOExcepcion e) {
+						handler.mostrarError(e.getMessage());
+					}
 				}
 			}
-
+				
+			}
 		});
+		
+		
 
 		botonCancelar.addActionListener(new ActionListener() {
 

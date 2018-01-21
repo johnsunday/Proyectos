@@ -216,15 +216,11 @@ public class HandlerGeneral {
 		EmpleadoBO.modificarEmpleado(p);
 	}
 
-	public void altaTarea(Tarea t) {
+	
+	public void altaTarea(Tarea t) throws MyDAOExcepcion  {
 		
-		try {
-			tareaBO.altaTarea(t);
-			mostrarExito("Tarea generada con exito");
-		} catch (MyDAOExcepcion e) {
+	tareaBO.altaTarea(t);
 			
-			mostrarError(e.getMessage());
-		}
 		
 	}
 
@@ -261,11 +257,24 @@ public class HandlerGeneral {
 
 	public void verTareas() {
 		try {
-			frame.cambiarPanel(new TablaTareasPanel(this, tareaBO.getTareas()));
+			frame.cambiarPanel(new TablaTareasPanel(this, tareaBO.getAllTareas()));
 		} catch (MyDAOExcepcion e) {
 			mostrarError(e.getMessage());
 		}
 	}
+
+	public void mostrarTareas() {
+		try {
+			tareaBO.getAllTareas();
+
+		} catch (MyDAOExcepcion e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+
+
 	
 
 }

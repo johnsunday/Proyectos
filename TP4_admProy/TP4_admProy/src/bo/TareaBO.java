@@ -13,10 +13,18 @@ public class TareaBO {
 	private TareaDAO dao;
 
 	public void altaTarea(Tarea t) throws MyDAOExcepcion {
+		
+		if (t.getHoras()>0)
 
 		dao.insertTarea(t);
+		
+		else
+			
+			
+			throw new MyDAOExcepcion ("La Cantidad de Horas asignadas debe ser mayor que 0");
 
 	}
+	
 
 	public void bajaTarea(Tarea t) throws MyDAOExcepcion {
 
@@ -24,13 +32,22 @@ public class TareaBO {
 
 	}
 
-	public void modificarProyecto(Tarea t) throws MyDAOExcepcion {
+	public void modificarTarea(Tarea t) throws MyDAOExcepcion {
 
-		dao.updateTarea(t);
+		
+		
+		if (t.getHoras()>0)
 
-	}
+			dao.updateTarea(t);
+			
+			else
+				
+				throw new MyDAOExcepcion ("La Cantidad de Horas asignadas debe ser mayor que 0");
 
-	public List<Tarea> getTareas() throws MyDAOExcepcion {
+		}
+	
+
+	public List<Tarea> getAllTareas() throws MyDAOExcepcion {
 		return dao.getAllTareas();
 	
 	}

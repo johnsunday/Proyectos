@@ -51,6 +51,7 @@ public class TablaProyectosPanel extends JPanel {
 
 	
 	
+	
 	/**
 	 * Asi como se armaron los paneles para el AMB, aca armamos el panel que contendra el JTABLE. 
 	 * Como todos los paneles, recibe el handler, pero ademas aca le enviamos el list de proyectos. 

@@ -117,6 +117,7 @@ public class TablaEmpleadosPanel extends JPanel {
 		});
 		
 		
+		
 		botonEditar.addActionListener(new ActionListener() {
 
 			@Override

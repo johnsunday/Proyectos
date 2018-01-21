@@ -47,12 +47,14 @@ public class Tarea {
 	}
 
 
-	public Tarea(String descripcion, int asignadoHoras, int proyectoid, int empleadoid) {
+	public Tarea(String descripcion, int asignadoHoras, String estado, int proyectoid, int empleadoid) {
 
 		this.descripcion = descripcion;
 		this.horas=asignadoHoras;
+		this.estado=estado;
 		this.proyectoid=proyectoid;
 		this.empleadoid=empleadoid;
+		
 		
 	}
 

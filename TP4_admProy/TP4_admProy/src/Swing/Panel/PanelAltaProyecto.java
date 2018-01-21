@@ -122,18 +122,18 @@ public class PanelAltaProyecto extends PanelPadre {
 
 					int presupuesto = 0;
 
-					if (validarNumero(txtPresupuesto.getText(), "presupuesto"))
+					if (validarNumero(txtPresupuesto.getText(), "Presupuesto")) {
 
-						
 						presupuesto = Integer.parseInt(txtPresupuesto.getText());
 
-					Proyecto p = new Proyecto(txtTema.getText(), presupuesto,"Iniciado");
+						Proyecto p = new Proyecto(txtTema.getText(), presupuesto, "Iniciado");
 
-					handler.altaProyecto(p);
+						handler.altaProyecto(p);
 
+					}
 				}
-			}
 
+			}
 		});
 
 		botonCancelar.addActionListener(new ActionListener() {

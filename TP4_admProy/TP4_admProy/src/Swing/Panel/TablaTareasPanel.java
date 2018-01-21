@@ -54,12 +54,9 @@ public class TablaTareasPanel extends JPanel {
 		JButton botonCancelar = new JButton("Cancelar");
 		JButton botonEliminar = new JButton("Eliminar");
 
-		DefaultListModel modeloLista = new DefaultListModel();
-		JList listaTareas = new JList(modeloLista);
+	
 
-		JScrollPane scrollPaneParaLista = new JScrollPane(listaTareas);
 
-		this.add(scrollPaneParaLista);
 
 		JPanel rowBotones = new JPanel();
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
@@ -91,28 +88,16 @@ public class TablaTareasPanel extends JPanel {
 
 		tablaTareas.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
 			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				boolean selected = tablaTareas.getSelectedRowCount() > 0;
-				botonEditar.setEnabled(selected);
-				botonEliminar.setEnabled(selected);
 
-				Tarea t = modelo.getTarea(tablaTareas.getSelectedRow());
-
-				List<Tarea> tareas = handler.getTareabyId(t);
-
-				DefaultListModel<Tarea> tareasmodel = new DefaultListModel<Tarea>();
-
-				for (int i = 0; i < tareas.size(); i++)
-
-				{
-
-					tareasmodel.addElement(tareas.get(i));
-				}
-
-				listaTareas.setModel(tareasmodel);
-
-			}
-		});
+				    public void valueChanged(ListSelectionEvent e)
+				    {
+				            boolean selected = tablaTareas.getSelectedRowCount() > 0;
+				            botonEditar.setEnabled(selected);
+				            botonEliminar.setEnabled(selected);
+				   
+				    }
+				});
+	
 
 		botonEditar.addActionListener(new ActionListener() {
 
@@ -156,8 +141,8 @@ public class TablaTareasPanel extends JPanel {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
-					// handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
-					handler.verProyectos();
+		
+					handler.mostrarTareas();
 				}
 
 			}
