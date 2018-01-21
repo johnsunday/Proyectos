@@ -49,7 +49,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
 	@Override
 	public void deleteEmpleadoById(Empleado e) throws MyDAOExcepcion {
-		String sql = "DELETE FROM EMPLEAOD WHERE id = ? ";
+		String sql = "DELETE FROM EMPLEADO WHERE legajo = ? ";
 
 		Connection c = DBManager.getInstance().connect();
 
@@ -153,7 +153,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 
 	@Override
 	public Empleado getEmpleadoById(Empleado emp) throws MyDAOExcepcion {
-		String sql = "SELECT * FROM EMPLEADO where id = " + emp.getLegajo();
+		String sql = "SELECT * FROM EMPLEADO where legajo = " + emp.getLegajo();
 		Connection c = DBManager.getInstance().connect();
 		try {
 			Empleado empleado= new Empleado();
@@ -168,7 +168,7 @@ public class EmpleadoDAOImpl implements EmpleadoDAO {
 				return empleado;
 			}				
 		} catch (SQLException e) {
-				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+				throw new MyDAOExcepcion("Hubo un error en la busqueda:" + e.getMessage());
 			}finally {
 				try {c.close();}
 				catch(SQLException e1){}}

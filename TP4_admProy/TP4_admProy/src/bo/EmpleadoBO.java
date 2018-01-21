@@ -35,10 +35,10 @@ public class EmpleadoBO {
 		
 	
 		Empleado EmpleadoCompleto = dao.getEmpleadoById(p);
-		List<Tarea> tareasDeEmpleado = daoTarea.getTareaByEmpleadoId(EmpleadoCompleto);
+		//List<Tarea> tareasDeEmpleado = daoTarea.getTareaByEmpleadoId(EmpleadoCompleto);
 		
 		
-		if (EmpleadoCompleto !=null && tareasDeEmpleado.size() ==0)
+		if (EmpleadoCompleto !=null)// && tareasDeEmpleado != null)
 		dao.deleteEmpleadoById(p);
 		else
 			throw new MyDAOExcepcion("El Empleado no existe o tiene tareas asignadas.");

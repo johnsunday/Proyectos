@@ -25,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 import Exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;
+import entidades.Empleado;
 import entidades.Proyecto;
 import entidades.Tarea;
 import implementation.ProyectoDAOImpl;
@@ -47,7 +48,7 @@ public class TablaProyectosPanel extends JPanel {
 	private JTextField proyectoID = new JTextField("0", 2);
 	private HandlerGeneral handler;
 	private List<Tarea> tareas;
-	private JList<Tarea> listaTareas;
+	private JList<String> listaTareas = new JList<String>() ;
 
 	
 	
@@ -76,19 +77,13 @@ public class TablaProyectosPanel extends JPanel {
 		this.add(scrollPaneParaTabla);
 
 		botonEditar = new JButton("Modificar.");
+		botonVerTareas = new JButton("Ver Tareas");
+
 		botonCancelar = new JButton("Cancelar");
 		botonEliminar = new JButton("Eliminar");
 		
 
-		DefaultListModel modeloLista = new DefaultListModel();
-		listaTareas = new JList(modeloLista);
-	    
-		JScrollPane scrollPaneParaLista = new JScrollPane(listaTareas);
-		
-		
-		this.add(scrollPaneParaLista);
-	    
-	    
+	  
 	    
 	    
 		
@@ -107,6 +102,8 @@ public class TablaProyectosPanel extends JPanel {
 		
 		rowBotones.add(Box.createHorizontalStrut(10));
 		
+
+		DefaultListModel<String> modeloLista = new DefaultListModel();
 		
 		botonEditar.setEnabled(false);
 		botonEliminar.setEnabled(false);
@@ -139,17 +136,17 @@ public class TablaProyectosPanel extends JPanel {
 		            try {
 		            	List<Tarea> tareas = handler.getTareasByIdProyecto(p);
 		            	
-		            	DefaultListModel<Tarea> tareasmodel = new DefaultListModel<Tarea>();
 		            	
 		            	for (int i=0 ; i< tareas.size() ; i++)
 		            		
 		            	{
 		            	
-		            	tareasmodel.addElement(tareas.get(i));
+		            		modeloLista.addElement(tareas.get(i).getDescripcion());
+		            		
 		            	}
 		            	
 		            	
-		            	listaTareas.setModel(tareasmodel);
+		            	
 		            	
 		            
 		            	
@@ -157,10 +154,15 @@ public class TablaProyectosPanel extends JPanel {
 						
 						
 					}
+		            
 		   
 		    }
+
+		
 		});
 		
+		
+    	
 		
 		botonEditar.addActionListener(new ActionListener() {
 
@@ -180,6 +182,11 @@ public class TablaProyectosPanel extends JPanel {
 			}
 
 		});		
+		
+		modeloLista.addElement("asddsadas");
+		listaTareas.setModel(modeloLista);
+		this.add(listaTareas);
+		
 		this.add(rowBotones);
 		
 		try {
@@ -213,7 +220,26 @@ public class TablaProyectosPanel extends JPanel {
 
 		});
 
-		
-	}
+	
 
+	
+	botonEditar.addActionListener(new ActionListener() {
+
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+			
+			Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());		
+			
+							
+			try {
+				handler.editarProyectos(p);
+			} catch (MyDAOExcepcion e) {
+				// TODO Agregar Algo
+			}
+			
+
+		}
+
+	});		
+	
 }

@@ -79,7 +79,7 @@ public class PanelAltaTarea extends PanelPadre {
 
 		try {
 
-			List<Proyecto> proyectosExistentes = handler.getAllProyectoByEstado("Iniciado.");
+			List<Proyecto> proyectosExistentes = handler.getAllProyectoByEstado("Iniciado");
 
 			for (int i = 0; i < proyectosExistentes.size(); i++)
 
