@@ -28,8 +28,6 @@ import entidades.Empleado;
 import implementation.EmpleadoDAOImpl;
 
 
-
-
 public class HandlerGeneral {
 	// PROYECTO VARS.
 	private ProyectoBO proyectoBO;
@@ -37,6 +35,8 @@ public class HandlerGeneral {
 	// EMPLEADO VARS.
 	private EmpleadoBO EmpleadoBO;
 
+	// LOGIN.
+	
 	
 	private MiFrame frame;
 	
@@ -53,6 +53,7 @@ public class HandlerGeneral {
 
 	}
 
+	
 	public void mostrarAltaProyecto() {
 		frame.cambiarPanel(new PanelAltaProyecto(this));
 	}
@@ -114,8 +115,6 @@ public class HandlerGeneral {
 	public void mostrarExito(String mensaje) {
 
 		JOptionPane.showMessageDialog(null, mensaje);
-		
-
 	}
 
 	public void init() {
@@ -180,8 +179,6 @@ public class HandlerGeneral {
 	public void modificarEmpleado(Empleado p) throws MyDAOExcepcion {
 		EmpleadoBO.modificarEmpleado(p);
 	}
-
-
 
 
 }
