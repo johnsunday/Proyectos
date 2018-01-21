@@ -7,4 +7,10 @@
 /diagClass.png
 /diagClass.ucls
 /entidades/
+<<<<<<< HEAD
 /implementation/
+=======
+/dao/
+/bo/
+/basics/
+>>>>>>> login
