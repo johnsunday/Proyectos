@@ -130,6 +130,7 @@ public class PanelAltaProyecto extends PanelPadre {
 
 						handler.altaProyecto(p);
 
+						
 					}
 				}
 

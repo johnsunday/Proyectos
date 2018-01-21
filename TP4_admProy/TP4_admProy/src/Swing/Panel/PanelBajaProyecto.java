@@ -134,6 +134,7 @@ public class PanelBajaProyecto extends PanelPadre {
 			}
 
 		});
+		
 
 		this.add(rowTitulo);
 		this.add(rowID);

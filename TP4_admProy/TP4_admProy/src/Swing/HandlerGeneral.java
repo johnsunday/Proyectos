@@ -241,7 +241,7 @@ public class HandlerGeneral {
 
 	public void bajaTarea(Tarea t) throws MyDAOExcepcion  {
 		
-		tareaBO.altaTarea(t);
+		tareaBO.bajaTarea(t);
 		
 	}
 

@@ -33,6 +33,7 @@ public class PanelBajaTarea extends PanelPadre {
 		this.handler = handler;
 		initUI();
 	}
+	
 
 	private void initUI() {
 		

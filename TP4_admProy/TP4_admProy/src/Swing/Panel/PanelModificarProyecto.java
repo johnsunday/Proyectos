@@ -75,6 +75,7 @@ public class PanelModificarProyecto extends PanelPadre {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
+		
 		JPanel rowTitulo = new JPanel();
 		// JPanel rowID = new JPanel();
 		JPanel rowTema = new JPanel();
