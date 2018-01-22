@@ -6,7 +6,7 @@ import java.util.List;
 import Exceptions.MyDAOExcepcion;
 import Exceptions.MyFormatExcepcion;
 import Swing.Frame.MiFrame;
-
+import Swing.Frame.loginFrame;
 //imports de proyecto 
 import Swing.Panel.PanelAltaProyecto;
 import Swing.Panel.PanelAltaTarea;
@@ -123,8 +123,8 @@ public class HandlerGeneral {
 	public List<Tarea> getTareasByIdProyecto ( Proyecto p) throws MyDAOExcepcion
 	{
 		
-		List<Tarea> tareas = tareaBO.getTareasByIdProyecto(p);
-		return tareas;
+		return tareaBO.getTareasByIdProyecto(p);
+		 
 		
 		
 		
@@ -153,7 +153,10 @@ public class HandlerGeneral {
 	}
 
 	public void init() {
+		
+		
 		frame = new MiFrame(this);
+		
 		frame.setVisible(true);
 	}
 

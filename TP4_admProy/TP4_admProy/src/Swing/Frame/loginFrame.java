@@ -3,6 +3,7 @@ package Swing.Frame;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -44,9 +45,7 @@ public class loginFrame extends JFrame {
 	
 	public void cerrarPanel() {
 		
-		this.getContentPane().removeAll();
-		this.getContentPane().repaint();
-		this.setVisible(false);
+		this.dispose();
 
 	}
 	
@@ -54,7 +53,9 @@ public class loginFrame extends JFrame {
 		panelLogin = new PanelLogin(handler);
 		this.getContentPane().add(panelLogin);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setSize(800, 600);
+		setSize(300,300);
+		Dimension dim = Toolkit.getDefaultToolkit().getScreenSize();
+		this.setLocation(dim.width/2-this.getSize().width/2, dim.height/2-this.getSize().height/2);
 	}
 	
 }

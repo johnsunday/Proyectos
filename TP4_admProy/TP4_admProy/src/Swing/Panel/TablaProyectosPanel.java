@@ -47,8 +47,9 @@ public class TablaProyectosPanel extends JPanel {
 	private JTextField nombreProyecto = new JTextField("Nombre", 6);
 	private JTextField proyectoID = new JTextField("0", 2);
 	private HandlerGeneral handler;
-	private List<Tarea> tareas;
+	
 	private JList<String> listaTareas = new JList<String>() ;
+	private JList<Integer> listaEmpleados = new JList<Integer>() ;
 
 	
 	
@@ -75,38 +76,50 @@ public class TablaProyectosPanel extends JPanel {
 		
 		scrollPaneParaTabla = new JScrollPane(tablaProyectos);
 		this.add(scrollPaneParaTabla);
+		JPanel rowListBox =new JPanel ();
 
 		botonEditar = new JButton("Modificar.");
-		botonVerTareas = new JButton("Ver Tareas");
-
+		botonVerTarea = new JButton("Ver Asignaciones");
 		botonCancelar = new JButton("Cancelar");
 		botonEliminar = new JButton("Eliminar");
-		
-
+		JLabel lblListBox = new JLabel ("Tareas Asignadas:");
+		JLabel lblListBoxE = new JLabel ("Legajos Asignados:");
 	  
 	    
 	    
 		
 		
 		JPanel rowBotones = new JPanel();
+		rowListBox.setLayout(new BoxLayout(rowListBox, BoxLayout.X_AXIS));
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
-		rowBotones.add(Box.createHorizontalStrut(10));
+		rowBotones.add(Box.createHorizontalStrut(50));
+		rowListBox.add(Box.createHorizontalStrut(10));
+	
 		rowBotones.add(botonEditar);
+		rowListBox.add(lblListBox);
+		rowListBox.add(Box.createHorizontalStrut(10));
+		rowListBox.add(listaTareas);
 		rowBotones.add(Box.createHorizontalStrut(10));
 
-		rowBotones.add(Box.createHorizontalStrut(10));
-		rowBotones.add(botonEliminar);
+		rowListBox.add(Box.createHorizontalStrut(10));
+		rowListBox.add(lblListBoxE);
+		rowBotones.add(botonVerTarea);
 		
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowBotones.add(botonCancelar);
 		
+		rowListBox.add(Box.createHorizontalStrut(10));
+		rowListBox.add(listaEmpleados);
 		rowBotones.add(Box.createHorizontalStrut(10));
+		rowBotones.add(botonEliminar);
 		
 
 		DefaultListModel<String> modeloLista = new DefaultListModel();
+		DefaultListModel<Integer> modeloListaE = new DefaultListModel();
 		
 		botonEditar.setEnabled(false);
 		botonEliminar.setEnabled(false);
+		botonVerTarea.setEnabled(false);
 		
 
 		botonCancelar.addActionListener(new ActionListener() {
@@ -130,30 +143,9 @@ public class TablaProyectosPanel extends JPanel {
 		            boolean selected = tablaProyectos.getSelectedRowCount() > 0;
 		            botonEditar.setEnabled(selected);
 		            botonEliminar.setEnabled(selected);
+		        	botonVerTarea.setEnabled(selected);
 		            
-		            Proyecto p =modelo.getProyecto(tablaProyectos.getSelectedRow());
-		            
-		            try {
-		            	List<Tarea> tareas = handler.getTareasByIdProyecto(p);
-		            	
-		            	
-		            	for (int i=0 ; i< tareas.size() ; i++)
-		            		
-		            	{
-		            	
-		            		modeloLista.addElement(tareas.get(i).getDescripcion());
-		            		
-		            	}
-		            	
-		            	
-		            	
-		            	
-		            
-		            	
-					} catch (MyDAOExcepcion e1) {
-						
-						
-					}
+		       
 		            
 		   
 		    }
@@ -164,7 +156,7 @@ public class TablaProyectosPanel extends JPanel {
 		
     	
 		
-		botonEditar.addActionListener(new ActionListener() {
+		botonVerTarea.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
@@ -173,9 +165,25 @@ public class TablaProyectosPanel extends JPanel {
 				
 								
 				try {
-					handler.editarProyectos(p);
+					List<Tarea> tareasProyecto =handler.getTareasByIdProyecto(p);
+					
+					
+					
+					for (int i =0 ; i<tareasProyecto.size() ; i++)
+						
+					{
+						
+						modeloLista.addElement(tareasProyecto.get(i).getDescripcion());
+						modeloListaE.addElement(tareasProyecto.get(i).getEmpleadoid());
+				
+						
+						
+					}
+					
 				} catch (MyDAOExcepcion e) {
-					// TODO Agregar Algo
+					
+					handler.mostrarError(e.getMessage());
+					
 				}
 				
 
@@ -183,11 +191,12 @@ public class TablaProyectosPanel extends JPanel {
 
 		});		
 		
-		modeloLista.addElement("asddsadas");
-		listaTareas.setModel(modeloLista);
-		this.add(listaTareas);
 		
+		listaTareas.setModel(modeloLista);
+		listaEmpleados.setModel(modeloListaE);
 		this.add(rowBotones);
+		this.add(rowListBox);
+		
 		
 		try {
 			handler.mostrarProyectos();
@@ -242,4 +251,5 @@ public class TablaProyectosPanel extends JPanel {
 
 	});		
 	
+}
 }

@@ -102,9 +102,10 @@ public class PanelLogin extends PanelPadre {
 			    if(txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty())
 			      JOptionPane.showMessageDialog(null,"Por favor complete todos los campos.", "ERROR", JOptionPane.ERROR_MESSAGE);
 			    else{
-			      if(	"root".equals(txtUsuario.getText()) && "w2e3r4t5".equals(txtContraseña.getText())){ 
+			      if(	"root".equals(txtUsuario.getText()) && "a".equals(txtContraseña.getText())){ 
 			    	 
 			    	  handler.cerrarPanelLogin();
+			    	  
 			    	
 			      }
 			      else

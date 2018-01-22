@@ -198,11 +198,11 @@ public class TareaDAOImpl implements TareaDAO{
 		String sql = "Select * FROM tarea WHERE empleado=" +  emp.getLegajo();
 		Connection c = DBManager.getInstance().connect();
 		try {
-			Tarea t = new Tarea();
+			
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()){
-				
+				Tarea t = new Tarea();
 				t.setId(rs.getInt("id"));
 				t.setDescripcion(rs.getString("descripcion"));
 				t.setHoras(rs.getInt("hora"));
@@ -225,14 +225,14 @@ public class TareaDAOImpl implements TareaDAO{
 		String sql = "Select * FROM tarea WHERE proyecto="+  p.getId();
 		Connection c = DBManager.getInstance().connect();
 		try {
-			Tarea t = new Tarea();
+			
 			Statement s = c.createStatement();
 			ResultSet rs = s.executeQuery(sql);
 			while(rs.next()){
-				
+				Tarea t = new Tarea();
 				t.setId(rs.getInt("id"));
 				t.setDescripcion(rs.getString("descripcion"));
-				t.setHoras(rs.getInt("hora"));
+				t.setHoras(rs.getInt("horas"));
 				t.setEstado(rs.getString("estado"));
 				t.setProyectoid(rs.getInt("proyecto"));
 				t.setEmpleadoid(rs.getInt("empleado"));
@@ -240,7 +240,7 @@ public class TareaDAOImpl implements TareaDAO{
 				resultado.add(t);
 			}				
 		} catch (SQLException e) {
-				throw new MyDAOExcepcion("Hubo un error en la busqueda");
+				throw new MyDAOExcepcion("Hubo un error en la busqueda" + e.getMessage());
 			}finally {
 				try {c.close();}
 				catch(SQLException e1){}}

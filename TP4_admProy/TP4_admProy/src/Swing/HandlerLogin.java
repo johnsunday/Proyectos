@@ -27,7 +27,6 @@ public class HandlerLogin {
 
 	public void cerrarPanelLogin() {
 		// Este frame es null. No se puede llamar a esta funcion sin caer en null pointer excep.
-		//frame.cerrarPanel();
 		HandlerGeneral handler = new HandlerGeneral();
 		handler.init();
 	}
