@@ -16,6 +16,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import exceptions.MyDAOExcepcion;
@@ -27,13 +28,14 @@ public class PanelLogin extends PanelPadre {
 	private static final long serialVersionUID = 1L;
 
 	private JTextField txtUsuario;
-	private JTextField txtContraseña;
+	private JPasswordField txtpass;
 	private JButton botonIngresar;
 	private JButton botonCancelar;
 	private HandlerLogin handler;
 	private JLabel lblTitulo;
 	private JLabel lblUsuario;
 	private JLabel lblContraseña;
+	
 	
 	public PanelLogin(HandlerLogin handler) {
 		this.handler = handler;
@@ -52,10 +54,10 @@ public class PanelLogin extends PanelPadre {
 		lblContraseña = new JLabel("Contraseña:");
 		
 		txtUsuario= new JTextField("");
-		txtContraseña = new JTextField("");
+		txtpass = new JPasswordField("");
 		
 		txtUsuario.setMaximumSize(new Dimension(450, 30));
-		txtContraseña.setMaximumSize(new Dimension(450, 30));
+		txtpass.setMaximumSize(new Dimension(450, 30));
 
 		
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
@@ -90,7 +92,7 @@ public class PanelLogin extends PanelPadre {
 		rowBotones.add(Box.createHorizontalStrut(10));
 		
 		rowUsuario.add(txtUsuario);
-		rowContraseña.add(txtContraseña);
+		rowContraseña.add(txtpass);
 		rowBotones.add(botonCancelar);
 
 		rowUsuario.add(Box.createHorizontalStrut(10));
@@ -99,10 +101,10 @@ public class PanelLogin extends PanelPadre {
 
 		botonIngresar.addActionListener(new ActionListener() {
 			  public void actionPerformed(ActionEvent e) {
-			    if(txtUsuario.getText().isEmpty() || txtContraseña.getText().isEmpty())
+			    if(txtUsuario.getText().isEmpty() || txtpass.getPassword().length==0)
 			      JOptionPane.showMessageDialog(null,"Por favor complete todos los campos.", "ERROR", JOptionPane.ERROR_MESSAGE);
 			    else{
-			      if(	"root".equals(txtUsuario.getText()) && "a".equals(txtContraseña.getText())){ 
+			      if(	"root".equals(txtUsuario.getText()) && "a".equals(String.valueOf(txtpass.getPassword()))){ 
 			    	 
 			    	  handler.cerrarPanelLogin();
 			    	  
