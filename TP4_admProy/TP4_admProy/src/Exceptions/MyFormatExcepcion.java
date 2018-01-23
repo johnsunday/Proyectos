@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 import com.sun.org.omg.CORBA.ExceptionDescriptionHelper;
 

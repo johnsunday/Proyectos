@@ -2,7 +2,7 @@ package bo;
 
 import java.util.List;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
 import implementation.ProyectoDAOImpl;

@@ -15,7 +15,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import entidades.Empleado;
 import entidades.Proyecto;

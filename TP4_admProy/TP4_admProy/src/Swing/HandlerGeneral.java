@@ -3,10 +3,10 @@ package Swing;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import java.util.List;
-import Exceptions.MyDAOExcepcion;
-import Exceptions.MyFormatExcepcion;
+import exceptions.MyDAOExcepcion;
+import exceptions.MyFormatExcepcion;
 import Swing.Frame.MiFrame;
-import Swing.Frame.loginFrame;
+
 //imports de proyecto 
 import Swing.Panel.PanelAltaProyecto;
 import Swing.Panel.PanelAltaTarea;

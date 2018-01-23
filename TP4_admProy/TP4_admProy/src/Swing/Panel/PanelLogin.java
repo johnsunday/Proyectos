@@ -18,8 +18,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Exceptions.MyDAOExcepcion;
-import Exceptions.MyFormatExcepcion;
+import exceptions.MyDAOExcepcion;
+import exceptions.MyFormatExcepcion;
 import Swing.HandlerLogin;
 
 public class PanelLogin extends PanelPadre {

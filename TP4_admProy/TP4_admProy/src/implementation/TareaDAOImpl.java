@@ -8,7 +8,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import basics.DBManager;
 import dao.TareaDAO;
 import entidades.Empleado;

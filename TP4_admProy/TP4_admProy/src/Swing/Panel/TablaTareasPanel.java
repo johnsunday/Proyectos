@@ -16,7 +16,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import Swing.EmpleadoTableModel;
 import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;

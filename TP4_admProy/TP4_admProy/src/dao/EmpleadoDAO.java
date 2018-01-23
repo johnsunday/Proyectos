@@ -2,7 +2,7 @@ package dao;
 
 import java.util.List;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import entidades.Empleado;
 
 /**

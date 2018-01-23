@@ -22,7 +22,7 @@ import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;
 import entidades.Empleado;
@@ -144,8 +144,8 @@ public class TablaProyectosPanel extends JPanel {
 		            botonEditar.setEnabled(selected);
 		            botonEliminar.setEnabled(selected);
 		        	botonVerTarea.setEnabled(selected);
-		            
-		       
+		            modeloLista.clear();
+		            modeloListaE.clear();
 		            
 		   
 		    }

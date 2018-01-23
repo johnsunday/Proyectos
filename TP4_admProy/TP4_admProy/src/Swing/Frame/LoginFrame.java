@@ -31,15 +31,15 @@ import Swing.Panel.PanelLogin;
  * 
  *
  */
-public class loginFrame extends JFrame {
+public class LoginFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private HandlerLogin handler;
 	private PanelLogin panelLogin;
 	
 	
-	public loginFrame(HandlerLogin handlerLogin) {
+	public LoginFrame(HandlerLogin handlerLogin) {
 		super("Login");
-		this.handler = new HandlerLogin();
+		this.handler = handlerLogin;
 		initUI();
 	}
 	

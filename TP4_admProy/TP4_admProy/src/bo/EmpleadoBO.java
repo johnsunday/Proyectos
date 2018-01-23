@@ -3,7 +3,7 @@ package bo;
 import java.util.List;
 
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import dao.EmpleadoDAO;
 import entidades.Empleado;
 import entidades.Tarea;

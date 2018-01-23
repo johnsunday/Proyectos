@@ -1,4 +1,4 @@
-package Exceptions;
+package exceptions;
 
 /**
  * Definimos una excepcion, que sera la que utilicemos en los try catch de cada metodo. 

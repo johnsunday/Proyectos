@@ -1,6 +1,6 @@
 package basics;
 
-import Exceptions.MyDAOExcepcion;
+import exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.HandlerLogin;
 

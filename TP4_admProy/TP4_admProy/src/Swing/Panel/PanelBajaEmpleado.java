@@ -13,8 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import Exceptions.MyDAOExcepcion;
-import Exceptions.MyFormatExcepcion;
+import exceptions.MyDAOExcepcion;
+import exceptions.MyFormatExcepcion;
 import Swing.HandlerGeneral;
 import entidades.Empleado;
 
