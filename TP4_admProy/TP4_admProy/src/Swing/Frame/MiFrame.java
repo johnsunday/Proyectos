@@ -130,18 +130,12 @@ public class MiFrame extends JFrame {
 
 		
 		
-		// MENU DE REPORTES //
-		mreportes = new JMenu();
-		mreportes.setText("Reportes");
-		mreportes.add(miAltaReportes);
-		mreportes.add(miBajaReportes);
-		mreportes.add(miModificacionReportes);
+	
 
 		mb.add(mEmpleado);
 		mb.add(mproyecto);
 		mb.add(mtarea);
-		mb.add(mreportes);
-		
+	
 		this.setJMenuBar(mb);
 
 		miAltaProyecto.addActionListener(new ActionListener() {

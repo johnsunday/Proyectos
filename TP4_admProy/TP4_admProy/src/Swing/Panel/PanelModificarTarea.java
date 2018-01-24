@@ -172,7 +172,6 @@ public class PanelModificarTarea extends PanelPadre {
 					tareaToModify.setId(t.getId());
 
 					try {
-						handler.mostrarExito(tareaToModify.getEstado());
 						handler.modificarTarea(tareaToModify);
 						handler.mostrarExito("La Tarea " + t.getDescripcion() + " fue modificada.");
 						handler.verTareas();

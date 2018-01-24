@@ -71,45 +71,39 @@ public class PanelModificarEmpleado extends PanelPadre {
 
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		JPanel rowLegajo = new JPanel();
-		JPanel rowTema = new JPanel();
+		
 		JPanel rowNombreCompleto = new JPanel();
 		JPanel rowSueldoHora = new JPanel();
 		JPanel rowBotones = new JPanel();
 
-		// rowTema.setLayout(new BoxLayout(rowTema, BoxLayout.X_AXIS));
-		rowLegajo.setLayout(new BoxLayout(rowLegajo, BoxLayout.X_AXIS));
-		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
 		rowNombreCompleto.setLayout(new BoxLayout(rowNombreCompleto, BoxLayout.X_AXIS));
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
 
-		rowLegajo.add(Box.createHorizontalStrut(10));
-		// rowTema.add(Box.createHorizontalStrut(10));
-		rowNombreCompleto.add(Box.createHorizontalStrut(10));
+	
 		rowNombreCompleto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 
 		lblTema.setFont((new Font("Arial", Font.BOLD, 17)));
 		lblTema.setForeground(Color.LIGHT_GRAY);
 
-		rowLegajo.add(lblLegajo);
-		//rowTema.add(lblTema);
+	
+
 		rowNombreCompleto.add(lblNombreCompleto);
 		rowSueldoHora.add(lblSueldoHora);
 		rowBotones.add(botonAceptar);
 
 
-		rowLegajo.add(Box.createHorizontalStrut(10));
+	
 		rowNombreCompleto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowSueldoHora.add(Box.createHorizontalStrut(10));
 
-		rowLegajo.add(txtLegajo);
+	
 		rowNombreCompleto.add(txtNombreCompleto);
 		rowSueldoHora.add(txtSueldoHora);
 		rowBotones.add(botonCancelar);
 
-		rowLegajo.add(Box.createHorizontalStrut(10));
+
 		rowNombreCompleto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowSueldoHora.add(Box.createHorizontalStrut(10));
@@ -131,7 +125,7 @@ public class PanelModificarEmpleado extends PanelPadre {
 				else {
 
 					Empleado EmpleadoToModify = new Empleado(
-							Integer.valueOf(txtLegajo.getText()), Integer.valueOf(txtSueldoHora.getText()), txtNombreCompleto.getText());
+							p.getLegajo(), Integer.valueOf(txtSueldoHora.getText()), txtNombreCompleto.getText());
 
 					try {
 						handler.modificarEmpleado(EmpleadoToModify);
@@ -155,8 +149,6 @@ public class PanelModificarEmpleado extends PanelPadre {
 
 		});
 
-		this.add(rowLegajo);
-		//this.add(rowTema);
 		this.add(rowSueldoHora);
 		this.add(rowNombreCompleto);
 		this.add(rowBotones);
