@@ -18,6 +18,7 @@ public class EmpleadoBO {
 	private TareaDAOImpl daoTarea;
 
 	
+	
 	public void altaEmpleado(Empleado p) throws MyDAOExcepcion {
 		
 		if (p.getSueldoHora() > 0) {

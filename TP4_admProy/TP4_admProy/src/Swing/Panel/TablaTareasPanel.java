@@ -34,7 +34,6 @@ public class TablaTareasPanel extends JPanel {
 	private TareaTableModel modelo;
 	private JScrollPane scrollPaneParaTabla;
 	private TareaDAOImpl pDAO = new TareaDAOImpl();
-	private Empleado Empleado;
 	private HandlerGeneral handler;
 
 	public TablaTareasPanel(HandlerGeneral handler, List<Tarea> tareas) {
@@ -106,18 +105,21 @@ public class TablaTareasPanel extends JPanel {
 
 				Tarea t = modelo.getTarea(tablaTareas.getSelectedRow());
 
-				handler.editarTarea(t);
+				try {
+					handler.editarTarea(t);
+				} catch (MyDAOExcepcion e) {
+					handler.mostrarError(e.getMessage());
+				}
 
 			}
 
 		});
 		this.add(rowBotones);
+		
+		
 
-		try {
-			handler.mostrarProyectos();
-		} catch (MyDAOExcepcion e) {
-			// TODO Auto-generated catch block
-		}
+
+	
 
 		botonEliminar.addActionListener(new ActionListener() {
 
@@ -127,28 +129,27 @@ public class TablaTareasPanel extends JPanel {
 				Tarea t = modelo.getTarea(tablaTareas.getSelectedRow());
 				int seleccion = JOptionPane.showOptionDialog(null,
 						"¿Desea eliminar la Tarea ID: " + t.getId() ,
-						"Confirma Eliminacion:", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, // null
-																												// para
-																												// icono
-																												// por
-																												// defecto.
+						"Confirma Eliminacion:", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, 
 						new Object[] { "Si", "No" }, null);
 
 				if (seleccion == 0) {
 					try {
 						handler.bajaTarea(t);
+						handler.verTareas();
 					} catch (MyDAOExcepcion e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
+						
+						handler.mostrarError(e.getMessage());
 					}
 		
-					handler.mostrarTareas();
+					
 				}
-
+			
 			}
 
 		});
 
+		this.add(rowBotones);
 	}
+	
 
 }

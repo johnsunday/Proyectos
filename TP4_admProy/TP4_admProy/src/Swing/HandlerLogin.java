@@ -29,5 +29,6 @@ public class HandlerLogin {
 		frame.dispose();
 		HandlerGeneral handler = new HandlerGeneral();
 		handler.init();
+		
 	}
 }

@@ -160,7 +160,6 @@ public class TablaEmpleadosPanel extends JPanel {
 						      
 						 if (seleccion == 0){
 								handler.bajaEmpleado(p);
-								handler.mostrarExito("El Empleado " +p.getLegajo() +" ha sido eliminado.");
 								handler.verEmpleados();
 						 }
 				

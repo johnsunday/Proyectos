@@ -201,7 +201,7 @@ public class TablaProyectosPanel extends JPanel {
 		try {
 			handler.mostrarProyectos();
 		} catch (MyDAOExcepcion e) {
-			// TODO Auto-generated catch block
+			handler.mostrarError(e.getMessage());
 		}
 
 		
@@ -220,7 +220,6 @@ public class TablaProyectosPanel extends JPanel {
 						      
 						 if (seleccion == 0){
 								handler.bajaProyecto(p);
-								//handler.mostrarExito("El proyecto " +p.getTema() +" ha sido eliminado.");
 								handler.verProyectos();
 						 }
 				
