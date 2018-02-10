@@ -1,12 +1,9 @@
 package Swing;
 
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import java.util.List;
 import exceptions.MyDAOExcepcion;
-import exceptions.MyFormatExcepcion;
 import Swing.Frame.MiFrame;
-
 //imports de proyecto 
 import Swing.Panel.PanelAltaProyecto;
 import Swing.Panel.PanelAltaTarea;
@@ -17,7 +14,6 @@ import Swing.Panel.PanelModificarTarea;
 import Swing.Panel.TablaProyectosPanel;
 import Swing.Panel.TablaTareasPanel;
 import bo.ProyectoBO;
-import dao.ProyectoDAO;
 import entidades.Proyecto;
 import entidades.Tarea;
 import implementation.ProyectoDAOImpl;
@@ -29,8 +25,6 @@ import Swing.Panel.PanelModificarEmpleado;
 import Swing.Panel.TablaEmpleadosPanel;
 import bo.EmpleadoBO;
 import bo.TareaBO;
-import dao.EmpleadoDAO;
-import dao.TareaDAO;
 import entidades.Empleado;
 import implementation.EmpleadoDAOImpl;
 
@@ -39,7 +33,7 @@ public class HandlerGeneral {
 	private ProyectoBO proyectoBO;
 
 	// EMPLEADO VARS.
-	private EmpleadoBO EmpleadoBO;
+	private EmpleadoBO empleadoBO;
 
 	// TAREA VARS.
 
@@ -57,8 +51,8 @@ public class HandlerGeneral {
 	public HandlerGeneral() {
 		proyectoBO = new ProyectoBO();
 		proyectoBO.setDAO(new ProyectoDAOImpl());
-		EmpleadoBO = new EmpleadoBO();
-		EmpleadoBO.setDAO(new EmpleadoDAOImpl());
+		empleadoBO = new EmpleadoBO();
+		empleadoBO.setDAO(new EmpleadoDAOImpl());
 		tareaBO = new TareaBO();
 		tareaBO.setDAO(new TareaDAOImpl());
 
@@ -163,7 +157,7 @@ public class HandlerGeneral {
 
 	public void verEmpleados() {
 		try {
-			frame.cambiarPanel(new TablaEmpleadosPanel(this, EmpleadoBO.getEmpleados()));
+			frame.cambiarPanel(new TablaEmpleadosPanel(this, empleadoBO.getEmpleados()));
 		} catch (MyDAOExcepcion e) {
 			mostrarError(e.getMessage());
 		}
@@ -172,7 +166,7 @@ public class HandlerGeneral {
 	public void altaEmpleado(Empleado p) {
 
 		try {
-			EmpleadoBO.altaEmpleado(p);
+			empleadoBO.altaEmpleado(p);
 			mostrarExito("Empleado agregado con exito.");
 		} catch (MyDAOExcepcion e) {
 			// TODO Auto-generated catch block
@@ -183,7 +177,7 @@ public class HandlerGeneral {
 
 	public void bajaEmpleado(Empleado p) {
 		try {
-			EmpleadoBO.bajaEmpleado(p);
+			empleadoBO.bajaEmpleado(p);
 			mostrarExito("Empleado borrado con exito.");
 		} catch (MyDAOExcepcion e) {
 			mostrarError(e.getMessage());
@@ -191,7 +185,7 @@ public class HandlerGeneral {
 	}
 
 	public void mostrarEmpleados() throws MyDAOExcepcion {
-		EmpleadoBO.getEmpleados();
+		empleadoBO.getEmpleados();
 	}
 
 	public void editarEmpleados(Empleado p) throws MyDAOExcepcion {
@@ -201,7 +195,7 @@ public class HandlerGeneral {
 	}
 
 	public void modificarEmpleado(Empleado p) throws MyDAOExcepcion {
-		EmpleadoBO.modificarEmpleado(p);
+		empleadoBO.modificarEmpleado(p);
 	}
 
 	public void altaTarea(Tarea t) throws MyDAOExcepcion {
@@ -219,7 +213,7 @@ public class HandlerGeneral {
 	}
 
 	public List<Empleado> getAllEmpleados() throws MyDAOExcepcion {
-		return EmpleadoBO.getEmpleados();
+		return empleadoBO.getEmpleados();
 
 	}
 
@@ -236,7 +230,6 @@ public class HandlerGeneral {
 	}
 
 	public List<Tarea> getTareabyId(Tarea t) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 

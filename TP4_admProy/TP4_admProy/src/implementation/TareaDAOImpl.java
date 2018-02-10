@@ -18,7 +18,7 @@ import entidades.Tarea;
 public class TareaDAOImpl implements TareaDAO{
 
 	public void deleteTareaById(Tarea t) throws MyDAOExcepcion {
-		String sql = "DELETE FROM tarea WHERE id = ? ";// + p.getId()+ "'";
+		String sql = "DELETE FROM tarea WHERE id = ? ";
 		Connection c = DBManager.getInstance().connect();
 
 		try {
@@ -205,11 +205,10 @@ public class TareaDAOImpl implements TareaDAO{
 				Tarea t = new Tarea();
 				t.setId(rs.getInt("id"));
 				t.setDescripcion(rs.getString("descripcion"));
-				t.setHoras(rs.getInt("hora"));
+				t.setHoras(rs.getInt("horas"));
 				t.setEstado(rs.getString("estado"));
 				t.setProyectoid(rs.getInt("proyecto"));
 				t.setEmpleadoid(rs.getInt("empleado"));
-				
 				resultado.add(t);
 			}				
 		} catch (SQLException e) {

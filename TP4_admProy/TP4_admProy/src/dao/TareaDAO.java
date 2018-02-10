@@ -3,9 +3,6 @@ package dao;
 import java.util.List;
 
 import exceptions.MyDAOExcepcion;
-
-import java.util.Collection;
-
 import entidades.Tarea;
 import entidades.Empleado;
 import entidades.Proyecto;

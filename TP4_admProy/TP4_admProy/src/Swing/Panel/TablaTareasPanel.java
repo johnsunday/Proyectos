@@ -6,9 +6,7 @@ import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
-import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -17,15 +15,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import exceptions.MyDAOExcepcion;
-import Swing.EmpleadoTableModel;
 import Swing.HandlerGeneral;
-import Swing.ProyectoTableModel;
 import Swing.TareaTableModel;
-import entidades.Empleado;
-import entidades.Proyecto;
 import entidades.Tarea;
-import implementation.EmpleadoDAOImpl;
-import implementation.TareaDAOImpl;
 
 public class TablaTareasPanel extends JPanel {
 
@@ -33,7 +25,6 @@ public class TablaTareasPanel extends JPanel {
 	private JTable tablaTareas;
 	private TareaTableModel modelo;
 	private JScrollPane scrollPaneParaTabla;
-	private TareaDAOImpl pDAO = new TareaDAOImpl();
 	private HandlerGeneral handler;
 
 	public TablaTareasPanel(HandlerGeneral handler, List<Tarea> tareas) {

@@ -3,10 +3,8 @@ package Swing.Panel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
 import Swing.HandlerGeneral;
 
-import javafx.scene.control.ComboBox;
 
 public abstract class PanelPadre extends JPanel {
 	

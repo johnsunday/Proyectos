@@ -6,24 +6,19 @@ import java.util.List;
 import exceptions.MyDAOExcepcion;
 import dao.EmpleadoDAO;
 import entidades.Empleado;
-import entidades.Tarea;
-import implementation.EmpleadoDAOImpl;
-import implementation.TareaDAOImpl;
 
 
 public class EmpleadoBO {
 
 
 	private EmpleadoDAO dao;
-	private TareaDAOImpl daoTarea;
 
 	
 	
-	public void altaEmpleado(Empleado p) throws MyDAOExcepcion {
+	public void altaEmpleado(Empleado empleadoAlta) throws MyDAOExcepcion {
 		
-		if (p.getSueldoHora() > 0) {
-			//AGREGAR VALIDACION DE NEGOCIO
-			dao.insertEmpleado(p);
+		if (empleadoAlta.getSueldoHora() > 0) {
+			dao.insertEmpleado(empleadoAlta);
 		}
 		else {
 			
@@ -32,24 +27,20 @@ public class EmpleadoBO {
 		
 	}
 
-	public void bajaEmpleado(Empleado p) throws MyDAOExcepcion {
+	public void bajaEmpleado(Empleado empleadoBaja) throws MyDAOExcepcion {
 		
 	
-		Empleado EmpleadoCompleto = dao.getEmpleadoById(p);
-		//List<Tarea> tareasDeEmpleado = daoTarea.getTareaByEmpleadoId(EmpleadoCompleto);
-		
-		
-		if (EmpleadoCompleto !=null)// && tareasDeEmpleado != null)
-		dao.deleteEmpleadoById(p);
+		Empleado empleadoCompleto = dao.getEmpleadoById(empleadoBaja);
+		if (empleadoCompleto !=null)
+		dao.deleteEmpleadoById(empleadoBaja);
 		else
 			throw new MyDAOExcepcion("El Empleado no existe o tiene tareas asignadas.");
 	}
 
 	
-	public void modificarEmpleado(Empleado EmpleadoToModify) throws MyDAOExcepcion {
-			if (EmpleadoToModify.getSueldoHora() > 0) {
-				//AGREGAR VALIDACION DE NEGOCIO
-				dao.updateEmpleado(EmpleadoToModify);
+	public void modificarEmpleado(Empleado empleadoToModify) throws MyDAOExcepcion {
+			if (empleadoToModify.getSueldoHora() > 0) {
+				dao.updateEmpleado(empleadoToModify);
 			}
 			else {
 				
@@ -64,8 +55,8 @@ public class EmpleadoBO {
 
 	
 
-	public void setDAO(EmpleadoDAO EmpleadoDAO) {
-		this.dao = EmpleadoDAO;
+	public void setDAO(EmpleadoDAO empleadoDAO) {
+		this.dao = empleadoDAO;
 	}
 
 	

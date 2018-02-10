@@ -1,48 +1,32 @@
 package Swing.Panel;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-
 import exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.EmpleadoTableModel;
 import entidades.Empleado;
-import implementation.EmpleadoDAOImpl;
-import javafx.scene.paint.Color;
 
 public class TablaEmpleadosPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTable tablaEmpleados;
 	private EmpleadoTableModel modelo;
-	private EmpleadoDAOImpl pDAO = new EmpleadoDAOImpl();
-	private Empleado Empleado;
 	public List<Empleado> Empleados;
 	private JScrollPane scrollPaneParaTabla;
 	private JButton botonEditar;
 	private JButton botonEliminar;
-	private JButton botonAgregar;
 	private JButton botonCancelar;
 	
-	private JTextField legajo = new JTextField("legjao", 6);
-	private JTextField nombreCompleto = new JTextField("nombreCompleto", 2);
-	private JTextField sueldoHora = new JTextField("sueldoPorHora", 3);
 	
 	private HandlerGeneral handler;
 
@@ -129,7 +113,7 @@ public class TablaEmpleadosPanel extends JPanel {
 				try {
 					handler.editarEmpleados(p);
 				} catch (MyDAOExcepcion e) {
-					// TODO Auto-generated catch block
+					handler.mostrarError(e.getMessage());
 				}
 				
 
@@ -141,7 +125,7 @@ public class TablaEmpleadosPanel extends JPanel {
 		try {
 			handler.mostrarEmpleados();
 		} catch (MyDAOExcepcion e) {
-			// TODO Auto-generated catch block
+			handler.mostrarError(e.getMessage());
 		}
 
 		

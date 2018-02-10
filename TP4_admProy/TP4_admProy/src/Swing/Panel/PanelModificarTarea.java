@@ -23,6 +23,7 @@ import exceptions.MyDAOExcepcion;
 
 public class PanelModificarTarea extends PanelPadre {
 
+	private static final long serialVersionUID = 1L;
 	private Tarea t;
 	private String[] estadosTarea = new String[] { "Iniciada", "En proceso", "Cancelada", "Finalizada" };
 

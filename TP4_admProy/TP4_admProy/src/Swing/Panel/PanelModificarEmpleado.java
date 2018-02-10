@@ -35,7 +35,6 @@ public class PanelModificarEmpleado extends PanelPadre {
 	private Empleado p;
 	
 	private JLabel lblTema;
-	private JLabel lblLegajo;
 	private JLabel lblNombreCompleto;
 	private JLabel lblSueldoHora;
 	
@@ -57,7 +56,6 @@ public class PanelModificarEmpleado extends PanelPadre {
 		botonCancelar = new JButton("Cancelar");
 		
 		lblTema = new JLabel("Modificacion de Empleados");
-		lblLegajo = new JLabel("Legajo :");
 		lblNombreCompleto = new JLabel("Nombre Completo:");
 		lblSueldoHora = new JLabel("Sueldo por Hora: ");
 		
@@ -117,19 +115,18 @@ public class PanelModificarEmpleado extends PanelPadre {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				
-//				handler.mostrarExito(p.getNombreCompleto());
 
 				if (validarCampo(txtSueldoHora) || validarCampo(txtNombreCompleto))
 
 					handler.mostrarError("Por favor complete todos los campos.");
 				else {
 
-					Empleado EmpleadoToModify = new Empleado(
+					Empleado empleadoToModify = new Empleado(
 							p.getLegajo(), Integer.valueOf(txtSueldoHora.getText()), txtNombreCompleto.getText());
 
 					try {
-						handler.modificarEmpleado(EmpleadoToModify);
-						handler.mostrarExito("El Empleado " + EmpleadoToModify.getNombreCompleto() + " fue modificado.");
+						handler.modificarEmpleado(empleadoToModify);
+						handler.mostrarExito("El Empleado " + empleadoToModify.getNombreCompleto() + " fue modificado.");
 						handler.verEmpleados();
 					} catch (MyDAOExcepcion e) {
 						handler.mostrarError(e.getMessage());

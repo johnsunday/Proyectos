@@ -12,7 +12,6 @@ import exceptions.MyDAOExcepcion;
 import basics.DBManager;
 import dao.EmpleadoDAO;
 import entidades.Empleado;
-import entidades.Proyecto;
 
 public class EmpleadoDAOImpl implements EmpleadoDAO {
 

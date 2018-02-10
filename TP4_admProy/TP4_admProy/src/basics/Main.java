@@ -1,16 +1,5 @@
 package basics;
-
-import exceptions.MyDAOExcepcion;
-import Swing.HandlerGeneral;
 import Swing.HandlerLogin;
-
-import dao.ProyectoDAO;
-import implementation.ProyectoDAOImpl;
-
-import dao.EmpleadoDAO;
-import implementation.EmpleadoDAOImpl;
-
-
 public class Main {
 
 	public static void main(String[] args) {
@@ -37,8 +26,6 @@ public class Main {
 		HandlerLogin handlerLogin = new HandlerLogin();
 		handlerLogin.init();
 		
-		//HandlerGeneral handler = new HandlerGeneral();
-		//handler.init();
 	}
 
 }

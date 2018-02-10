@@ -38,7 +38,6 @@ public class PanelModificarProyecto extends PanelPadre {
 	private JLabel lblTitulo;
 	private JLabel lblPresupuesto;
 	private JLabel lblEstado;
-	private JTextField txtId;
 	private JTextField txtTema;
 	private JTextField txtPresupuesto;
 	private String[] estadosProyecto = new String[]
@@ -61,15 +60,12 @@ public class PanelModificarProyecto extends PanelPadre {
 		botonAceptar = new JButton("Aceptar");
 		botonCancelar = new JButton("Cancelar");
 		lblTitulo = new JLabel("Modificacion de Proyectos");
-		// lblId = new JLabel(" Id. :");
 		lblTema = new JLabel("Tema :");
 		lblPresupuesto = new JLabel("Presupuesto:");
 		lblEstado = new JLabel("Estado: ");
-		// txtId = new JTextField("");
 		txtTema = new JTextField("");
 		txtPresupuesto = new JTextField("");
 
-		// txtId.setMaximumSize(new Dimension(450, 30));
 		txtTema.setMaximumSize(new Dimension(450, 30));
 		txtPresupuesto.setMaximumSize(new Dimension(450, 30));
 
@@ -77,21 +73,18 @@ public class PanelModificarProyecto extends PanelPadre {
 
 		
 		JPanel rowTitulo = new JPanel();
-		// JPanel rowID = new JPanel();
 		JPanel rowTema = new JPanel();
 		JPanel rowPresupuesto = new JPanel();
 		JPanel rowEstado = new JPanel();
 		JPanel rowBotones = new JPanel();
 
 		rowTitulo.setLayout(new BoxLayout(rowTitulo, BoxLayout.X_AXIS));
-		// rowID.setLayout(new BoxLayout(rowID, BoxLayout.X_AXIS));
 		rowTema.setLayout(new BoxLayout(rowTema, BoxLayout.X_AXIS));
 		rowPresupuesto.setLayout(new BoxLayout(rowPresupuesto, BoxLayout.X_AXIS));
 		rowPresupuesto.setLayout(new BoxLayout(rowPresupuesto, BoxLayout.X_AXIS));
 		rowBotones.setLayout(new BoxLayout(rowBotones, BoxLayout.X_AXIS));
 
 		rowTitulo.add(Box.createHorizontalStrut(10));
-		// rowID.add(Box.createHorizontalStrut(10));
 		rowTema.add(Box.createHorizontalStrut(10));
 		rowPresupuesto.add(Box.createHorizontalStrut(10));
 		rowPresupuesto.add(Box.createHorizontalStrut(10));
@@ -101,36 +94,29 @@ public class PanelModificarProyecto extends PanelPadre {
 		lblTitulo.setForeground(Color.LIGHT_GRAY);
 
 		rowTitulo.add(lblTitulo);
-		// rowID.add(lblId);
 		rowTema.add(lblTema);
 		rowPresupuesto.add(lblPresupuesto);
 		rowEstado.add(lblEstado);
 		rowBotones.add(botonAceptar);
 
-		// rowID.add(Box.createHorizontalStrut(10));
 		rowTema.add(Box.createHorizontalStrut(10));
 		rowPresupuesto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowEstado.add(Box.createHorizontalStrut(10));
 
-		// rowID.add(txtId);
 		rowTema.add(txtTema);
 		rowPresupuesto.add(txtPresupuesto);
 		rowEstado.add(estadosCombo);
 		rowBotones.add(botonCancelar);
 
-		// rowID.add(Box.createHorizontalStrut(10));
 		rowTema.add(Box.createHorizontalStrut(10));
 		rowPresupuesto.add(Box.createHorizontalStrut(10));
 		rowBotones.add(Box.createHorizontalStrut(10));
 		rowEstado.add(Box.createHorizontalStrut(10));
 
-		//SETEO
 		txtTema.setText(p.getTema());
-		
 		txtPresupuesto.setText(String.valueOf(p.getPresupuesto()));
 		estadosCombo.setSelectedItem(p.getEstado());
-
 		botonAceptar.addActionListener(new ActionListener() {
 
 			@Override
@@ -173,13 +159,10 @@ public class PanelModificarProyecto extends PanelPadre {
 		});
 
 		this.add(rowTitulo);
-		// this.add(rowID);
 		this.add(rowTema);
 		this.add(rowEstado);
 		this.add(rowPresupuesto);
 		this.add(rowBotones);
-		// this.add(botonAceptar);
-		// this.add(botonCancelar);
 
 	}
 

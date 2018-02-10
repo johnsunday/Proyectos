@@ -3,8 +3,8 @@ package bo;
 import java.util.List;
 
 import exceptions.MyDAOExcepcion;
-import dao.ProyectoDAO;
 import dao.TareaDAO;
+import entidades.Empleado;
 import entidades.Proyecto;
 import entidades.Tarea;
 
@@ -28,8 +28,14 @@ public class TareaBO {
 	
 
 	public void bajaTarea(Tarea t) throws MyDAOExcepcion {
+		
+		if (t.getEstado().equals("Iniciado"))
 
 		dao.deleteTareaById(t);
+		
+		else
+			
+			throw new MyDAOExcepcion ("Solo se permite dar de baja tareas con estado Inciado ");
 
 	}
 
@@ -59,8 +65,11 @@ public class TareaBO {
 	
 	}
 	
+public List<Tarea> getTareasByIdEmpleado(Empleado e) throws MyDAOExcepcion {
+		
+		return dao.getTareaByEmpleadoId(e);
 	
-
+	}
 	public void setDAO(TareaDAO tareaDAO) {
 		this.dao = tareaDAO;
 	}

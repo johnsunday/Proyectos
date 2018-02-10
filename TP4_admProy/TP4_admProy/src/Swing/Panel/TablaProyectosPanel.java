@@ -1,51 +1,38 @@
 package Swing.Panel;
 
-import java.awt.BorderLayout;
-import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.JTextField;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import exceptions.MyDAOExcepcion;
 import Swing.HandlerGeneral;
 import Swing.ProyectoTableModel;
-import entidades.Empleado;
 import entidades.Proyecto;
 import entidades.Tarea;
-import implementation.ProyectoDAOImpl;
-import javafx.scene.paint.Color;
 
 public class TablaProyectosPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	private JTable tablaProyectos;
 	private ProyectoTableModel modelo;
-	private ProyectoDAOImpl pDAO = new ProyectoDAOImpl();
-	private Proyecto proyecto;
+	
 	public List<Proyecto> proyectos;
 	private JScrollPane scrollPaneParaTabla;
 	private JButton botonEditar;
 	private JButton botonEliminar;
 	private JButton botonVerTarea;
-	private JButton botonAgregar;
 	private JButton botonCancelar;
-	private JTextField nombreProyecto = new JTextField("Nombre", 6);
-	private JTextField proyectoID = new JTextField("0", 2);
 	private HandlerGeneral handler;
 	
 	private JList<String> listaTareas = new JList<String>() ;
@@ -114,8 +101,8 @@ public class TablaProyectosPanel extends JPanel {
 		rowBotones.add(botonEliminar);
 		
 
-		DefaultListModel<String> modeloLista = new DefaultListModel();
-		DefaultListModel<Integer> modeloListaE = new DefaultListModel();
+		DefaultListModel<String> modeloLista = new DefaultListModel<String>();
+		DefaultListModel<Integer> modeloListaE = new DefaultListModel<Integer>();
 		
 		botonEditar.setEnabled(false);
 		botonEliminar.setEnabled(false);
@@ -242,7 +229,7 @@ public class TablaProyectosPanel extends JPanel {
 			try {
 				handler.editarProyectos(p);
 			} catch (MyDAOExcepcion e) {
-				// TODO Agregar Algo
+				handler.mostrarError(e.getMessage());
 			}
 			
 

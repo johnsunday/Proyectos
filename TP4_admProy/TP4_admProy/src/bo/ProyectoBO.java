@@ -5,7 +5,6 @@ import java.util.List;
 import exceptions.MyDAOExcepcion;
 import dao.ProyectoDAO;
 import entidades.Proyecto;
-import implementation.ProyectoDAOImpl;
 
 /**
  * Se crean el business object, es el encargado de tener la logica de negocio.
@@ -20,8 +19,6 @@ public class ProyectoBO {
 	public void altaProyecto(Proyecto p) throws MyDAOExcepcion {
 
 		if (p.getPresupuesto() > 0) {
-			
-			// AGREGAR VALIDACION DE NEGOCIO
 			dao.insertProyecto(p);
 		} else {
 
@@ -66,8 +63,8 @@ public class ProyectoBO {
 	}
 
 	public List<Proyecto> getAllProyectoByEstado(String estado) throws MyDAOExcepcion {
-	return dao.getAllProyectosByEstado(estado);	
-	
+		return dao.getAllProyectosByEstado(estado);
+
 	}
 
 }
