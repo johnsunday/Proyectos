@@ -17,7 +17,7 @@ public abstract class PanelPadre extends JPanel {
 			Integer.parseInt(numbers);
 			isNumber= true;
 		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "El campo  "+campo + " no es numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "El campo  "+campo + " no es un numerico entero.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return isNumber;
 	}
