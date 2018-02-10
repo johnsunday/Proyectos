@@ -15,6 +15,7 @@ import Swing.Panel.PanelBajaTarea;
 import Swing.Panel.PanelModificarProyecto;
 import Swing.Panel.PanelModificarTarea;
 import Swing.Panel.TablaProyectosPanel;
+import Swing.Panel.TablaRptProyectosByEstadoPanel;
 import Swing.Panel.TablaTareasPanel;
 import bo.ProyectoBO;
 import dao.ProyectoDAO;
@@ -245,9 +246,7 @@ public class HandlerGeneral {
 			frame.cambiarPanel(new TablaTareasPanel(this, tareaBO.getAllTareas()));
 		} catch (MyDAOExcepcion e) {
 			mostrarError(e.getMessage());
-		
-			
-	}
+		}
 	}
 
 	public void mostrarTareas() throws MyDAOExcepcion {
@@ -258,6 +257,15 @@ public class HandlerGeneral {
 	
 	public void modificarTarea(Tarea t) throws MyDAOExcepcion {
 		tareaBO.modificarTarea(t);
+	}
+	
+
+	public void verProyectosByEstado(String estado) {
+		try {
+			frame.cambiarPanel(new TablaRptProyectosByEstadoPanel(this, proyectoBO.getAllProyectoByEstado(estado)));
+		} catch (MyDAOExcepcion e) {
+			mostrarError(e.getMessage());
+		}
 	}
 
 }

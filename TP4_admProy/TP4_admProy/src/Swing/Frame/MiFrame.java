@@ -75,9 +75,8 @@ public class MiFrame extends JFrame {
 		JMenuItem miModificacionTarea;
 
 		
-		JMenuItem miAltaReportes;
-		JMenuItem miBajaReportes;
-		JMenuItem miModificacionReportes;
+		JMenuItem miReporteProyByEstado;
+		
 		JMenu mproyecto;
 		JMenu mEmpleado;
 		JMenu mtarea;
@@ -87,7 +86,7 @@ public class MiFrame extends JFrame {
 
 		miAltaProyecto = new JMenuItem("Alta");
 		miBajaProyecto = new JMenuItem("Baja");
-		miModificacionProyecto = new JMenuItem("Ver/Modificar/Eliminar");
+		miModificacionProyecto = new JMenuItem("Modificacion");
 
 		miAltaEmpleado = new JMenuItem("Alta");
 		miBajaEmpleado = new JMenuItem("Baja");
@@ -100,9 +99,7 @@ public class MiFrame extends JFrame {
 		miModificacionTarea = new JMenuItem("Modificacion");
 		
 		
-		miAltaReportes = new JMenuItem("Alta");
-		miBajaReportes = new JMenuItem("Baja");
-		miModificacionReportes = new JMenuItem("Modificacion");
+		miReporteProyByEstado = new JMenuItem("Proyectos por estado");
 
 		// MENU DE EMPLEADO //
 
@@ -127,14 +124,17 @@ public class MiFrame extends JFrame {
 		mtarea.add(miBajaTarea);
 		mtarea.add(miModificacionTarea);
 
-
+		//MENU DE Reportes //
+		mreportes = new JMenu();
+		mreportes.setText("Reportes");
+		mreportes.add(miReporteProyByEstado);
 		
-		
-	
 
 		mb.add(mEmpleado);
 		mb.add(mproyecto);
 		mb.add(mtarea);
+		mb.add(mreportes);
+		
 	
 		this.setJMenuBar(mb);
 
@@ -229,6 +229,16 @@ public class MiFrame extends JFrame {
 
 	});
 
+		
+		miReporteProyByEstado.addActionListener(new ActionListener() {
+			
+		@Override
+		public void actionPerformed(ActionEvent arg0) {
+
+			handler.verProyectosByEstado("Iniciado");
+		}
+
+	});
 
 		
 	
