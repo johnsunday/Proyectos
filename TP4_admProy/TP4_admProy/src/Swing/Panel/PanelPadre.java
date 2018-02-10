@@ -17,23 +17,14 @@ public abstract class PanelPadre extends JPanel {
 			Integer.parseInt(numbers);
 			isNumber= true;
 		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo, "Error", JOptionPane.ERROR_MESSAGE);
+			JOptionPane.showMessageDialog(null, "El campo  "+campo + " no es numerico.", "Error", JOptionPane.ERROR_MESSAGE);
 		}
 		return isNumber;
 	}
 	
 	
 	
-	public boolean validarFloat(String numbers, String campo) {
-		boolean isFloat = false;
-		try {
-			Float.parseFloat(numbers);
-			isFloat= true;
-		} catch(NumberFormatException e) {
-			JOptionPane.showMessageDialog(null, "ERROR al ingresar el "+campo, "Error", JOptionPane.ERROR_MESSAGE);
-		}
-		return isFloat;
-	}
+	
 	
 	public boolean validarCampo(JTextField campo){
 		return campo.getText().isEmpty();

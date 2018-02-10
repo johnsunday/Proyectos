@@ -116,12 +116,14 @@ public class PanelAltaEmpleado extends PanelPadre {
 					handler.mostrarError("Por favor complete todos los campos.");
 
 				else {
-					int sueldoHora =1;						
-					sueldoHora = Integer.parseInt(txtSueldoHora.getText());
-					
+					int sueldoHora =0;						
+					if (validarNumero(txtSueldoHora.getText(), "Sueldo"))					
+					{
+						sueldoHora = Integer.parseInt(txtSueldoHora.getText());
 					Empleado emp = new Empleado(sueldoHora, txtNombreCompleto.getText());
-
 					handler.altaEmpleado(emp);
+				}
+					
 				}
 			}
 
